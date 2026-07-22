@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { voiceApi } from '../api/voiceApi';
 import { Mic2, Plus } from 'lucide-react';
+import { UploadVoiceModal } from '../components/voices/UploadVoiceModal';
 import './VoiceListPage.css';
 
 export function VoiceListPage() {
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+
   const { data: voices, isLoading, error } = useQuery({
     queryKey: ['voices'],
     queryFn: voiceApi.getVoices,
@@ -16,7 +20,7 @@ export function VoiceListPage() {
           <h1>Voice Library</h1>
           <p>Manage and create custom voice models</p>
         </div>
-        <button className="btn-primary">
+        <button className="btn-primary" onClick={() => setIsUploadModalOpen(true)}>
           <Plus size={20} />
           Add Voice
         </button>
@@ -64,6 +68,11 @@ export function VoiceListPage() {
           )}
         </div>
       )}
+
+      <UploadVoiceModal 
+        isOpen={isUploadModalOpen} 
+        onClose={() => setIsUploadModalOpen(false)} 
+      />
     </div>
   );
 }
