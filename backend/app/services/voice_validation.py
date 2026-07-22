@@ -13,13 +13,17 @@ class VoiceValidationService:
     def __init__(self):
         self.settings = ConfigRegistry.get_settings()
 
-    def _convert_to_wav(self, file_bytes: bytes) -> bytes:
+    def _convert_to_wav(self, file_bytes: bytes, filename: str) -> bytes:
         """Attempt to convert an audio file buffer to WAV using FFmpeg."""
         import tempfile
         import os
         
-        # Write to a temporary file so ffmpeg can seek (required for M4A/MP4 moov atoms)
-        fd, temp_path = tempfile.mkstemp(suffix=".tmp")
+        ext = os.path.splitext(filename)[1] if '.' in filename else '.tmp'
+        if not ext:
+            ext = '.tmp'
+
+        # Write to a temporary file so ffmpeg can seek and use correct demuxer by extension
+        fd, temp_path = tempfile.mkstemp(suffix=ext)
         try:
             with open(fd, 'wb') as f:
                 f.write(file_bytes)
@@ -31,11 +35,12 @@ class VoiceValidationService:
             )
             out, err = process.communicate()
             if process.returncode != 0:
-                raise Exception(f"FFmpeg conversion failed: {err.decode('utf-8')}")
+                err_msg = err.decode('utf-8', errors='ignore').strip()
+                raise Exception(f"FFmpeg failed ({err_msg or 'unknown error'})")
             return out
         except Exception as e:
-            logger.error(f"Error during audio conversion: {e}")
-            raise InvalidAudioFileException("Failed to convert audio file to WAV.")
+            logger.error(f"Error during audio conversion for '{filename}': {e}")
+            raise InvalidAudioFileException(f"Audio conversion failed for '{filename}': {e}")
         finally:
             if os.path.exists(temp_path):
                 os.remove(temp_path)
@@ -66,7 +71,7 @@ class VoiceValidationService:
             # If wave.open fails, it might be an MP3, M4A, etc. Try converting it.
             logger.info(f"File '{filename}' failed RIFF check. Attempting format conversion with FFmpeg...")
             try:
-                processed_bytes = self._convert_to_wav(file_bytes)
+                processed_bytes = self._convert_to_wav(file_bytes, filename)
                 with wave.open(io.BytesIO(processed_bytes), "rb") as wave_file:
                     n_channels = wave_file.getnchannels()
                     sample_rate = wave_file.getframerate()
@@ -74,10 +79,12 @@ class VoiceValidationService:
                     sample_width = wave_file.getsampwidth()
                     duration = n_frames / float(sample_rate) if sample_rate > 0 else 0.0
                 logger.info(f"Successfully converted '{filename}' to WAV format.")
+            except InvalidAudioFileException:
+                raise
             except Exception as conv_err:
                 logger.warning(f"Validation failed for '{filename}': {conv_err}")
                 raise InvalidAudioFileException(
-                    f"File '{filename}' is not a valid audio file or could not be processed."
+                    f"File '{filename}' is not a valid audio file or could not be processed: {conv_err}"
                 )
 
         # 3. Duration check
