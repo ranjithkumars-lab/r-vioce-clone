@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { voiceApi } from '../api/voiceApi';
 import { jobApi } from '../api/jobApi';
-import { JobCreate } from '../types/job';
+import type { JobCreate } from '../types/job';
 import { useNotificationStore } from '../stores/useNotificationStore';
 import { Card } from '../components/common/Card';
 import { Mic2, Settings2, Play } from 'lucide-react';
