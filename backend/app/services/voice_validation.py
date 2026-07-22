@@ -15,20 +15,30 @@ class VoiceValidationService:
 
     def _convert_to_wav(self, file_bytes: bytes) -> bytes:
         """Attempt to convert an audio file buffer to WAV using FFmpeg."""
+        import tempfile
+        import os
+        
+        # Write to a temporary file so ffmpeg can seek (required for M4A/MP4 moov atoms)
+        fd, temp_path = tempfile.mkstemp(suffix=".tmp")
         try:
+            with open(fd, 'wb') as f:
+                f.write(file_bytes)
+                
             process = subprocess.Popen(
-                ['ffmpeg', '-i', 'pipe:0', '-f', 'wav', 'pipe:1', '-v', 'error'],
-                stdin=subprocess.PIPE,
+                ['ffmpeg', '-y', '-i', temp_path, '-f', 'wav', 'pipe:1', '-v', 'error'],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE
             )
-            out, err = process.communicate(input=file_bytes)
+            out, err = process.communicate()
             if process.returncode != 0:
                 raise Exception(f"FFmpeg conversion failed: {err.decode('utf-8')}")
             return out
         except Exception as e:
             logger.error(f"Error during audio conversion: {e}")
             raise InvalidAudioFileException("Failed to convert audio file to WAV.")
+        finally:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
 
     def validate_wav_file(self, file_bytes: bytes, filename: str) -> Tuple[Dict[str, Any], bytes]:
         """Validate uploaded audio bytes, converting them to WAV if necessary. Returns metadata and the final WAV bytes."""
