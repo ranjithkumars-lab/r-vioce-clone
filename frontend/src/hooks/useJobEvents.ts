@@ -13,8 +13,9 @@ export function useJobEvents() {
   const connect = useCallback(() => {
     if (wsRef.current?.readyState === WebSocket.OPEN) return;
 
-    // We can use env var for WS URL later
-    const wsUrl = 'ws://localhost:8000/ws/jobs';
+    // Use dynamic relative WebSocket URL so it works regardless of the host IP
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${protocol}//${window.location.host}/ws/jobs`;
     const ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {

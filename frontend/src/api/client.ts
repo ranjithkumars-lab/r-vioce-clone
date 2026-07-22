@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid'; // I might need to install uuid, but let's just use standard fetch or crypto.randomUUID for request ID if available, wait, crypto.randomUUID() is built-in to modern browsers. Let's just use crypto.randomUUID().
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api/v1',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
