@@ -1,5 +1,5 @@
 import apiClient from './client';
-import { HealthStatus } from '../types/system';
+import type { HealthStatus } from '../types/system';
 
 export const systemApi = {
   getHealth: async (): Promise<HealthStatus> => {
