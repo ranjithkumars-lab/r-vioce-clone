@@ -34,6 +34,36 @@ cd voice-studio
 docker compose up --build
 ```
 
+## Local Development (Without Docker)
+
+If you cannot run Docker (e.g., inside a restricted container), you can run the services natively using Python and Node.js. You will need three separate terminal windows.
+
+**Terminal 1: Start the Backend API**
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+**Terminal 2: Start the Background Worker**
+```bash
+cd backend
+source venv/bin/activate
+python worker_main.py
+```
+
+**Terminal 3: Start the Frontend UI**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+- **Frontend UI**: http://localhost:5173
+- **API Docs**: http://localhost:8000/docs
+
 - **Frontend**: http://localhost:80
 - **API Docs**: http://localhost:8000/docs
 - **Grafana**: http://localhost:3000 (admin/admin)
