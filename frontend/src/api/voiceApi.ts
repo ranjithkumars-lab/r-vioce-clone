@@ -18,10 +18,7 @@ export const voiceApi = {
   },
 
   uploadVoice: async (data: FormData, onUploadProgress?: (progressEvent: any) => void): Promise<Voice> => {
-    const response = await apiClient.post<{message: string, voice: Voice}>('/voices/upload', data, {
-      headers: {
-        'Content-Type': undefined,
-      },
+    const response = await apiClient.postForm<{message: string, voice: Voice}>('/voices/upload', data, {
       onUploadProgress,
     });
     return response.data.voice;
