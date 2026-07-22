@@ -53,7 +53,7 @@ class BenchmarkClient:
             if not job_id:
                 raise KeyError(f"Response missing job_id: {job_data}")
         except Exception as e:
-            logger.error(f"Failed to submit job: {e}")
+            logger.exception("Failed to submit job")
             return
 
         self.metrics.track_job_submitted(job_id)
