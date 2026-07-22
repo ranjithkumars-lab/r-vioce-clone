@@ -12,6 +12,7 @@ interface UploadVoiceModalProps {
 
 export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
   const [name, setName] = useState('');
+  const [language, setLanguage] = useState('en');
   const [gender, setGender] = useState('unspecified');
   const [engine, setEngine] = useState('f5tts');
   const [file, setFile] = useState<File | null>(null);
@@ -46,6 +47,7 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
 
   const resetAndClose = () => {
     setName('');
+    setLanguage('en');
     setGender('unspecified');
     setEngine('f5tts');
     setFile(null);
@@ -81,8 +83,10 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
   };
 
   const handleFileSelection = (selectedFile: File) => {
-    if (!selectedFile.name.toLowerCase().endsWith('.wav')) {
-      addNotification({ type: 'error', message: 'Only .wav files are supported.' });
+    const validExtensions = ['.wav', '.mp3', '.m4a', '.flac'];
+    const hasValidExtension = validExtensions.some(ext => selectedFile.name.toLowerCase().endsWith(ext));
+    if (!hasValidExtension) {
+      addNotification({ type: 'error', message: `Only ${validExtensions.join(', ')} files are supported.` });
       return;
     }
     
@@ -118,6 +122,7 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
 
     const formData = new FormData();
     formData.append('name', name);
+    formData.append('language', language);
     formData.append('gender', gender);
     formData.append('engine', engine);
     formData.append('file', file);
@@ -161,6 +166,17 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
 
             <div className="form-row">
               <div className="form-group">
+                <label>Language</label>
+                <select 
+                  value={language} 
+                  onChange={e => setLanguage(e.target.value)}
+                  disabled={mutation.isPending}
+                >
+                  <option value="en">English (en)</option>
+                  <option value="ta">Tamil (ta)</option>
+                </select>
+              </div>
+              <div className="form-group">
                 <label>Gender</label>
                 <select 
                   value={gender} 
@@ -172,6 +188,9 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
                   <option value="female">Female</option>
                 </select>
               </div>
+            </div>
+
+            <div className="form-row">
               <div className="form-group">
                 <label>Engine</label>
                 <select 
@@ -186,7 +205,7 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
             </div>
 
             <div className="form-group">
-              <label>Reference Audio (.wav)</label>
+              <label>Reference Audio</label>
               <div 
                 className={`dropzone ${isDragging ? 'dragging' : ''} ${file ? 'has-file' : ''} ${mutation.isPending ? 'disabled' : ''}`}
                 onDragOver={handleDragOver}
@@ -196,13 +215,13 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
                 {!file ? (
                   <div className="dropzone-empty">
                     <UploadCloud size={32} className="text-muted" />
-                    <p>Drag and drop your <b>.wav</b> file here</p>
-                    <span className="text-small text-muted">or</span>
+                    <p>Drag and drop your audio file here</p>
+                    <span className="text-small text-muted">Supports .wav, .mp3, .m4a, .flac</span>
                     <label className="btn-secondary btn-small file-browse-btn">
                       Browse Files
                       <input 
                         type="file" 
-                        accept=".wav" 
+                        accept=".wav,.mp3,.m4a,.flac" 
                         onChange={handleFileChange}
                         disabled={mutation.isPending}
                         hidden

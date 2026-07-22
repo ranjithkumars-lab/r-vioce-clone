@@ -32,14 +32,16 @@ class VoiceService:
         engine: str = "f5tts",
     ) -> VoiceRecord:
         """Validate, store audio file, write voice.json profile, and persist VoiceRecord database entry."""
-        # 1. Validate audio
-        audio_info = self.validator.validate_wav_file(file_bytes, filename)
+        # 1. Validate audio (and convert if necessary)
+        audio_info, processed_bytes = self.validator.validate_wav_file(file_bytes, filename)
 
         voice_id = str(uuid.uuid4())
         now = datetime.utcnow()
 
         # 2. Save audio file via StorageManager
-        audio_path = self.storage_manager.save_voice_file(voice_id, file_bytes, filename)
+        # Ensure the stored filename always ends in .wav since we normalized it
+        storage_filename = f"{filename.rsplit('.', 1)[0]}.wav" if '.' in filename else f"{filename}.wav"
+        audio_path = self.storage_manager.save_voice_file(voice_id, processed_bytes, storage_filename)
 
         # 3. Create rich voice.json metadata profile
         metadata = {
