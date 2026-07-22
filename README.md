@@ -81,6 +81,8 @@ Initial performance testing of the multi-GPU scheduling layer.
 
 ## Documentation
 
+- [System Architecture & Workflow](docs/workflow.md)
+- [User & Operator Guide](docs/usage.md)
 - [API Reference](docs/api.md)
 - [Plugin Development Guide](docs/plugins.md)
 - [Contributing](CONTRIBUTING.md)
