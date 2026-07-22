@@ -12,8 +12,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Stage 2: Runtime
 FROM python:3.11-slim
 
-# Create a non-root user
-RUN addgroup --system appgroup && adduser --system --group appuser
+# Create a non-root user and install ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/* && \
+    addgroup --system appgroup && adduser --system --group appuser
 
 WORKDIR /app
 
