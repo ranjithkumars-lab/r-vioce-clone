@@ -56,16 +56,16 @@ def list_jobs(
     # Since JobService might not have list_jobs yet, let's just return empty array or implement a basic fetch
     # We will fetch directly from DB for now to unblock the frontend
     from app.database.session import SessionLocal
-    from app.models.job import JobModel
+    from app.models.job import JobRecord
     db = SessionLocal()
     try:
-        jobs = db.query(JobModel).order_by(JobModel.created_at.desc()).offset(skip).limit(limit).all()
+        jobs = db.query(JobRecord).order_by(JobRecord.created_at.desc()).offset(skip).limit(limit).all()
         return [
             JobStatusResponse(
                 job_id=j.id,
                 status=j.status,
-                progress_percentage=j.progress,
-                output_url=j.result_audio_path,
+                progress_percentage=j.progress_percentage,
+                output_url=j.output_audio_path,
                 error=j.error_message,
             ) for j in jobs
         ]
