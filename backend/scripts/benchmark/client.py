@@ -47,7 +47,7 @@ class BenchmarkClient:
 
         # 1. Submit Job
         try:
-            resp = await self.client.post("/api/v1/jobs/generate", json=payload)
+            resp = await self.client.post("/api/v1/jobs/enqueue", json=payload)
             resp.raise_for_status()
             job_data = resp.json()
             job_id = job_data["id"]
