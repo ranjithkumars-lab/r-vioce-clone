@@ -49,7 +49,9 @@ class BenchmarkClient:
             resp = await self.client.post("/api/v1/jobs/enqueue", json=payload)
             resp.raise_for_status()
             job_data = resp.json()
-            job_id = job_data["id"]
+            job_id = job_data.get("job_id") or job_data.get("id")
+            if not job_id:
+                raise KeyError(f"Response missing job_id: {job_data}")
         except Exception as e:
             logger.error(f"Failed to submit job: {e}")
             return
