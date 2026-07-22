@@ -60,7 +60,9 @@ class BenchmarkClient:
 
         # 2. Poll Status
         completed = False
-        while not completed:
+        attempts = 0
+        while not completed and attempts < 600:
+            attempts += 1
             await asyncio.sleep(0.5)
             try:
                 poll_resp = await self.client.get(f"/api/v1/jobs/{job_id}")
@@ -79,6 +81,10 @@ class BenchmarkClient:
                 logger.error(f"Failed polling job {job_id}: {e}")
                 self.metrics.update_job_status(job_id, "FAILED")
                 completed = True
+                
+        if not completed:
+            logger.error(f"Job {job_id} timed out after 5 minutes of polling.")
+            self.metrics.update_job_status(job_id, "FAILED")
 
     async def run_concurrent_batch(self, concurrency: int, total_jobs: int, engine: str):
         """Run a batch of jobs with a specific concurrency limit."""
