@@ -1,5 +1,5 @@
 import apiClient from './client';
-import { Voice, VoiceCreate } from '../types/voice';
+import type { Voice, VoiceCreate } from '../types/voice';
 
 export const voiceApi = {
   getVoices: async (): Promise<Voice[]> => {

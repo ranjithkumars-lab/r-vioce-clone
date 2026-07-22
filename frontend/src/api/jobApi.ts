@@ -1,5 +1,5 @@
 import apiClient from './client';
-import { JobRecord, JobCreate } from '../types/job';
+import type { JobRecord, JobCreate } from '../types/job';
 
 export const jobApi = {
   createJob: async (data: JobCreate): Promise<JobRecord> => {

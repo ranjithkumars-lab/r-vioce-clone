@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { JobRecord } from '../types/job';
+import type { JobRecord } from '../types/job';
 
 interface JobStore {
   activeJobs: Record<string, JobRecord>;
