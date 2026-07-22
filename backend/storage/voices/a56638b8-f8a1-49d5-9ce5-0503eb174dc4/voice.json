@@ -1,0 +1,17 @@
+{
+  "id": "a56638b8-f8a1-49d5-9ce5-0503eb174dc4",
+  "name": "Sample Voice",
+  "language": "en",
+  "gender": "male",
+  "engine": "f5tts",
+  "duration": 3.0,
+  "sample_rate": 24000,
+  "channels": 1,
+  "file_path": "D:\\Voice-Clone\\backend\\storage\\voices\\a56638b8-f8a1-49d5-9ce5-0503eb174dc4\\sample.wav",
+  "status": "ACTIVE",
+  "created_at": "2026-07-22T11:51:16.901140",
+  "updated_at": "2026-07-22T11:51:16.901140",
+  "tags": [],
+  "description": "Uploaded reference voice profile 'Sample Voice'",
+  "version": 1
+}

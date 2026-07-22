@@ -1,0 +1,66 @@
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.quick-action-card {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  border-radius: var(--radius-lg);
+}
+
+.quick-action-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+}
+
+.quick-action-card h3 {
+  font-size: 1.1rem;
+  margin-top: var(--spacing-sm);
+}
+
+.quick-action-card p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.recent-activity h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.p-xl { padding: var(--spacing-xl); }
+.mt-md { margin-top: var(--spacing-md); }
+
+/* Make responsive */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

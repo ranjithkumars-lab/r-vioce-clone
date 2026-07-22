@@ -1,0 +1,69 @@
+import { useQuery } from '@tanstack/react-query';
+import { voiceApi } from '../api/voiceApi';
+import { Mic2, Plus } from 'lucide-react';
+import './VoiceListPage.css';
+
+export function VoiceListPage() {
+  const { data: voices, isLoading, error } = useQuery({
+    queryKey: ['voices'],
+    queryFn: voiceApi.getVoices,
+  });
+
+  return (
+    <div className="voice-list-page animate-fade-in">
+      <header className="page-header">
+        <div>
+          <h1>Voice Library</h1>
+          <p>Manage and create custom voice models</p>
+        </div>
+        <button className="btn-primary">
+          <Plus size={20} />
+          Add Voice
+        </button>
+      </header>
+
+      {error && (
+        <div className="alert error">
+          Failed to load voices. Please try again later.
+        </div>
+      )}
+
+      {isLoading && (
+        <div className="voices-grid">
+          {[1, 2, 3].map(i => (
+            <div key={i} className="glass-panel voice-card skeleton">
+              Loading voice...
+            </div>
+          ))}
+        </div>
+      )}
+
+      {voices && (
+        <div className="voices-grid">
+          {voices.length === 0 ? (
+            <div className="empty-state">
+              <Mic2 size={48} className="text-muted" />
+              <p>No voices found in your library.</p>
+            </div>
+          ) : (
+            voices.map(voice => (
+              <div key={voice.id} className="glass-panel voice-card group">
+                <div className="voice-card-header">
+                  <h3>{voice.name}</h3>
+                  <span className={`status-dot ${voice.is_active ? 'active' : 'inactive'}`}></span>
+                </div>
+                <p className="voice-description">{voice.description}</p>
+                <div className="voice-card-footer">
+                  <span className="badge-model">{voice.model_type}</span>
+                  <span className="text-muted text-small">
+                    {new Date(voice.created_at).toLocaleDateString()}
+                  </span>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

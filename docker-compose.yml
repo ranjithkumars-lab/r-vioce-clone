@@ -1,0 +1,99 @@
+version: "3.8"
+
+x-common-env: &common-env
+  APP_ENV: ${APP_ENV:-production}
+  API_V1_STR: /api/v1
+  LOG_LEVEL: info
+  STORAGE_DIR: /app/storage
+  DB_URL: sqlite:////app/storage/voice_studio.db
+  # Redis configuration will be used if QUEUE_BACKEND=redis
+  QUEUE_BACKEND: ${QUEUE_BACKEND:-sqlite}
+  REDIS_URL: redis://redis:6379/0
+
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: voicestudio-api:latest
+    ports:
+      - "8000:8000"
+    environment:
+      <<: *common-env
+    volumes:
+      - voice-studio-data:/app/storage
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      redis:
+        condition: service_started
+        required: false
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.worker
+    image: voicestudio-worker:latest
+    environment:
+      <<: *common-env
+    volumes:
+      - voice-studio-data:/app/storage
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+      - api
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: voicestudio-frontend:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin_secure}
+    depends_on:
+      - prometheus
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    profiles:
+      - production
+
+volumes:
+  voice-studio-data:
+  prometheus-data:
+  grafana-data:
+  redis-data:

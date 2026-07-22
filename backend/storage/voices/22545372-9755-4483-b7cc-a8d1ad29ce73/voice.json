@@ -1,0 +1,17 @@
+{
+  "id": "22545372-9755-4483-b7cc-a8d1ad29ce73",
+  "name": "Pipeline Voice",
+  "language": "en",
+  "gender": "female",
+  "engine": "f5tts",
+  "duration": 3.0,
+  "sample_rate": 24000,
+  "channels": 1,
+  "file_path": "D:\\Voice-Clone\\backend\\storage\\voices\\22545372-9755-4483-b7cc-a8d1ad29ce73\\voice_ref.wav",
+  "status": "ACTIVE",
+  "created_at": "2026-07-22T11:59:39.549721",
+  "updated_at": "2026-07-22T11:59:39.549721",
+  "tags": [],
+  "description": "Uploaded reference voice profile 'Pipeline Voice'",
+  "version": 1
+}

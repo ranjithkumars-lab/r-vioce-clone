@@ -1,0 +1,17 @@
+.skeleton-base {
+  background: linear-gradient(
+    90deg,
+    var(--color-card) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    var(--color-card) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: var(--radius-sm);
+  min-height: 1em;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

@@ -1,0 +1,48 @@
+.history-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.history-item {
+  padding: var(--spacing-lg);
+}
+
+.history-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.history-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.history-script {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-style: italic;
+  padding-left: var(--spacing-md);
+  border-left: 2px solid var(--color-border);
+  margin: var(--spacing-sm) 0;
+}
+
+.history-player-wrapper {
+  margin-top: var(--spacing-sm);
+}

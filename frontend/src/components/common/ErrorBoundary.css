@@ -1,0 +1,33 @@
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--color-background);
+}
+
+.error-container {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+  max-width: 400px;
+}
+
+.error-icon {
+  color: var(--color-error);
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-message {
+  color: var(--color-text-muted);
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  word-break: break-all;
+}

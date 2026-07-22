@@ -1,0 +1,301 @@
+[2026-07-22 17:18:16,658] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:16,835] [INFO] [voice_studio:33]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:18:16,835] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:16,835] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:16,911] [INFO] [voice_studio:26]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:18:16,914] [INFO] [voice_studio:38]: Startup complete - ready to accept API requests.
+[2026-07-22 17:18:16,923] [INFO] [voice_studio:33]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:18:16,924] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:16,924] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:16,924] [INFO] [voice_studio:26]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:18:16,925] [INFO] [voice_studio:38]: Startup complete - ready to accept API requests.
+[2026-07-22 17:18:17,036] [INFO] [voice_studio:33]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:18:17,037] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:17,037] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:17,038] [INFO] [voice_studio:26]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:18:17,038] [INFO] [voice_studio:38]: Startup complete - ready to accept API requests.
+[2026-07-22 17:18:17,040] [WARNING] [voice_studio:43]: PyTorch is not installed in the environment. Returning CPU fallback status.
+[2026-07-22 17:18:17,047] [INFO] [voice_studio:33]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:18:17,047] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:17,047] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:18:17,048] [INFO] [voice_studio:26]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:18:17,049] [INFO] [voice_studio:38]: Startup complete - ready to accept API requests.
+[2026-07-22 17:18:17,053] [INFO] [voice_studio:52]: Successfully validated WAV file 'sample.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:18:17,053] [INFO] [voice_studio:53]: Saved voice audio file for ID '40ba347c-04e7-438e-b9fc-5dd95a685bd9' to: D:\Voice-Clone\backend\storage\voices\40ba347c-04e7-438e-b9fc-5dd95a685bd9\sample.wav
+[2026-07-22 17:18:17,053] [INFO] [voice_studio:69]: Saved voice metadata for ID '40ba347c-04e7-438e-b9fc-5dd95a685bd9' to: D:\Voice-Clone\backend\storage\voices\40ba347c-04e7-438e-b9fc-5dd95a685bd9\voice.json
+[2026-07-22 17:18:17,545] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-0\test_storage_manager_directori0
+[2026-07-22 17:18:17,552] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-0\test_save_and_retrieve_metadat0
+[2026-07-22 17:18:17,553] [INFO] [voice_studio:69]: Saved voice metadata for ID 'test-voice-123' to: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-0\test_save_and_retrieve_metadat0\voices\test-voice-123\voice.json
+[2026-07-22 17:18:17,562] [INFO] [voice_studio:52]: Successfully validated WAV file 'test.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:21:16,693] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,764] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:21:16,764] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,765] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,766] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:21:16,766] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:21:16,769] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:21:16,774] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:21:16,774] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,774] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,774] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:21:16,774] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:21:16,877] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:21:16,884] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:21:16,884] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,885] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,885] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:21:16,885] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:21:16,888] [WARNING] [voice_studio:43]: PyTorch is not installed in the environment. Returning CPU fallback status.
+[2026-07-22 17:21:16,889] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:21:16,894] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:21:16,894] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,895] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:21:16,895] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:21:16,895] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:21:16,901] [INFO] [voice_studio:52]: Successfully validated WAV file 'sample.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:21:16,901] [INFO] [voice_studio:53]: Saved voice audio file for ID 'a56638b8-f8a1-49d5-9ce5-0503eb174dc4' to: D:\Voice-Clone\backend\storage\voices\a56638b8-f8a1-49d5-9ce5-0503eb174dc4\sample.wav
+[2026-07-22 17:21:16,901] [INFO] [voice_studio:69]: Saved voice metadata for ID 'a56638b8-f8a1-49d5-9ce5-0503eb174dc4' to: D:\Voice-Clone\backend\storage\voices\a56638b8-f8a1-49d5-9ce5-0503eb174dc4\voice.json
+[2026-07-22 17:21:17,324] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:21:17,336] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-1\test_storage_manager_directori0
+[2026-07-22 17:21:17,341] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-1\test_save_and_retrieve_metadat0
+[2026-07-22 17:21:17,342] [INFO] [voice_studio:69]: Saved voice metadata for ID 'test-voice-123' to: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-1\test_save_and_retrieve_metadat0\voices\test-voice-123\voice.json
+[2026-07-22 17:21:17,345] [INFO] [voice_studio:52]: Successfully validated WAV file 'test.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:23:59,059] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,114] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:23:59,115] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,115] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,117] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:23:59,118] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:23:59,120] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:23:59,123] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:23:59,123] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,123] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,123] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:23:59,123] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:23:59,130] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,130] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,133] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:23:59,141] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:23:59,141] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,141] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,143] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:23:59,144] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:23:59,144] [WARNING] [voice_studio:43]: PyTorch is not installed in the environment. Returning CPU fallback status.
+[2026-07-22 17:23:59,147] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:23:59,152] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:23:59,152] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,153] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:23:59,154] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:23:59,154] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:23:59,159] [INFO] [voice_studio:52]: Successfully validated WAV file 'sample.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:23:59,159] [INFO] [voice_studio:53]: Saved voice audio file for ID 'a52d8eba-5311-40b5-9a9f-d719b74b1ca2' to: D:\Voice-Clone\backend\storage\voices\a52d8eba-5311-40b5-9a9f-d719b74b1ca2\sample.wav
+[2026-07-22 17:23:59,159] [INFO] [voice_studio:69]: Saved voice metadata for ID 'a52d8eba-5311-40b5-9a9f-d719b74b1ca2' to: D:\Voice-Clone\backend\storage\voices\a52d8eba-5311-40b5-9a9f-d719b74b1ca2\voice.json
+[2026-07-22 17:23:59,165] [INFO] [voice_studio:80]: Successfully registered new voice profile ID 'a52d8eba-5311-40b5-9a9f-d719b74b1ca2' (Sample Voice)
+[2026-07-22 17:23:59,183] [INFO] [voice_studio:93]: Deleted storage folder for voice ID 'a52d8eba-5311-40b5-9a9f-d719b74b1ca2'
+[2026-07-22 17:23:59,185] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:23:59,196] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-2\test_storage_manager_directori0
+[2026-07-22 17:23:59,200] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-2\test_save_and_retrieve_metadat0
+[2026-07-22 17:23:59,201] [INFO] [voice_studio:69]: Saved voice metadata for ID 'test-voice-123' to: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-2\test_save_and_retrieve_metadat0\voices\test-voice-123\voice.json
+[2026-07-22 17:23:59,203] [INFO] [voice_studio:52]: Successfully validated WAV file 'test.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:29:39,401] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,401] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:29:39,401] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:29:39,401] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:29:39,401] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:29:39,401] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:29:39,503] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:29:39,504] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,505] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,506] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:29:39,506] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:29:39,509] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:29:39,515] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:29:39,515] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,516] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,518] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:29:39,518] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:29:39,520] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,520] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,525] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:29:39,530] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:29:39,531] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,532] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,533] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:29:39,533] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:29:39,536] [WARNING] [voice_studio:43]: PyTorch is not installed in the environment. Returning CPU fallback status.
+[2026-07-22 17:29:39,537] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:29:39,542] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:29:39,543] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,543] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:29:39,545] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:29:39,546] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:29:39,549] [INFO] [voice_studio:52]: Successfully validated WAV file 'voice_ref.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:29:39,549] [INFO] [voice_studio:53]: Saved voice audio file for ID '22545372-9755-4483-b7cc-a8d1ad29ce73' to: D:\Voice-Clone\backend\storage\voices\22545372-9755-4483-b7cc-a8d1ad29ce73\voice_ref.wav
+[2026-07-22 17:29:39,549] [INFO] [voice_studio:69]: Saved voice metadata for ID '22545372-9755-4483-b7cc-a8d1ad29ce73' to: D:\Voice-Clone\backend\storage\voices\22545372-9755-4483-b7cc-a8d1ad29ce73\voice.json
+[2026-07-22 17:29:39,549] [INFO] [voice_studio:80]: Successfully registered new voice profile ID '22545372-9755-4483-b7cc-a8d1ad29ce73' (Pipeline Voice)
+[2026-07-22 17:29:39,561] [INFO] [voice_studio:26]: Preprocessed text script: 10 words, 63 chars.
+[2026-07-22 17:29:39,561] [INFO] [voice_studio:58]: Pipeline running synthesis clip '34923e93-70dc-4352-95f5-cc3e03d286f1' via engine 'mock'...
+[2026-07-22 17:29:39,567] [INFO] [voice_studio:33]: Postprocessed synthesized WAV clip: 3.5s, 24000Hz
+[2026-07-22 17:29:40,100] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:29:40,114] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:29:40,115] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:29:40,115] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:29:40,115] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:29:40,115] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:29:40,119] [INFO] [voice_studio:26]: Preprocessed text script: 3 words, 16 chars.
+[2026-07-22 17:29:40,124] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-3\test_storage_manager_directori0
+[2026-07-22 17:29:40,130] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-3\test_save_and_retrieve_metadat0
+[2026-07-22 17:29:40,131] [INFO] [voice_studio:69]: Saved voice metadata for ID 'test-voice-123' to: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-3\test_save_and_retrieve_metadat0\voices\test-voice-123\voice.json
+[2026-07-22 17:29:40,134] [INFO] [voice_studio:52]: Successfully validated WAV file 'test.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:30:04,524] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,524] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:30:04,524] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:30:04,524] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:30:04,524] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:30:04,524] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:30:04,629] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:30:04,629] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,629] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,630] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:30:04,630] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:30:04,633] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:30:04,637] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:30:04,645] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,645] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,645] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:30:04,645] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:30:04,656] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,657] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,659] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:30:04,667] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:30:04,668] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,669] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,670] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:30:04,670] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:30:04,673] [WARNING] [voice_studio:43]: PyTorch is not installed in the environment. Returning CPU fallback status.
+[2026-07-22 17:30:04,676] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:30:04,684] [INFO] [voice_studio:17]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:30:04,685] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,685] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:30:04,687] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:30:04,687] [INFO] [voice_studio:22]: Startup complete - ready to accept API requests.
+[2026-07-22 17:30:04,696] [INFO] [voice_studio:52]: Successfully validated WAV file 'voice_ref.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:30:04,696] [INFO] [voice_studio:53]: Saved voice audio file for ID 'f68aa99f-0e93-474a-bcf4-46f13a7ce36b' to: D:\Voice-Clone\backend\storage\voices\f68aa99f-0e93-474a-bcf4-46f13a7ce36b\voice_ref.wav
+[2026-07-22 17:30:04,696] [INFO] [voice_studio:69]: Saved voice metadata for ID 'f68aa99f-0e93-474a-bcf4-46f13a7ce36b' to: D:\Voice-Clone\backend\storage\voices\f68aa99f-0e93-474a-bcf4-46f13a7ce36b\voice.json
+[2026-07-22 17:30:04,703] [INFO] [voice_studio:80]: Successfully registered new voice profile ID 'f68aa99f-0e93-474a-bcf4-46f13a7ce36b' (Pipeline Voice)
+[2026-07-22 17:30:04,710] [INFO] [voice_studio:26]: Preprocessed text script: 10 words, 63 chars.
+[2026-07-22 17:30:04,710] [INFO] [voice_studio:58]: Pipeline running synthesis clip '608ca232-2856-4509-b43d-735bb4279a95' via engine 'mock'...
+[2026-07-22 17:30:04,722] [INFO] [voice_studio:33]: Postprocessed synthesized WAV clip: 3.5s, 24000Hz
+[2026-07-22 17:30:04,722] [INFO] [voice_studio:82]: Pipeline completed clip '608ca232-2856-4509-b43d-735bb4279a95': 3.5s WAV saved.
+[2026-07-22 17:30:04,731] [INFO] [voice_studio:24]: Shutting down Voice Studio...
+[2026-07-22 17:30:04,741] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:30:04,742] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:30:04,742] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:30:04,742] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:30:04,742] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:30:04,745] [INFO] [voice_studio:26]: Preprocessed text script: 3 words, 16 chars.
+[2026-07-22 17:30:04,749] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-4\test_storage_manager_directori0
+[2026-07-22 17:30:04,754] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-4\test_save_and_retrieve_metadat0
+[2026-07-22 17:30:04,755] [INFO] [voice_studio:69]: Saved voice metadata for ID 'test-voice-123' to: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-4\test_save_and_retrieve_metadat0\voices\test-voice-123\voice.json
+[2026-07-22 17:30:04,758] [INFO] [voice_studio:52]: Successfully validated WAV file 'test.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:33:19,193] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,193] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:33:19,193] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:33:19,193] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:33:19,193] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:33:19,193] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:33:19,291] [INFO] [voice_studio:19]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:33:19,291] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,292] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,292] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:33:19,292] [INFO] [voice_studio:28]: Background Worker Daemon started successfully.
+[2026-07-22 17:33:19,293] [INFO] [voice_studio:26]: Startup complete - ready to accept API requests.
+[2026-07-22 17:33:19,294] [INFO] [voice_studio:22]: [8ca60a9c-683c-466b-8b1d-576c37d843cb] GET /api/v1/health - Status 200 in 0.0ms
+[2026-07-22 17:33:19,296] [INFO] [voice_studio:28]: Shutting down Voice Studio...
+[2026-07-22 17:33:19,800] [INFO] [voice_studio:35]: Background Worker Daemon stopped.
+[2026-07-22 17:33:19,804] [INFO] [voice_studio:19]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:33:19,809] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,809] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,809] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:33:19,809] [INFO] [voice_studio:28]: Background Worker Daemon started successfully.
+[2026-07-22 17:33:19,809] [INFO] [voice_studio:26]: Startup complete - ready to accept API requests.
+[2026-07-22 17:33:19,809] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,813] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:19,813] [INFO] [voice_studio:22]: [98477ee3-6598-4631-b7cc-5c94797fe4c5] GET /api/v1/ready - Status 200 in 4.02ms
+[2026-07-22 17:33:19,816] [INFO] [voice_studio:28]: Shutting down Voice Studio...
+[2026-07-22 17:33:20,318] [INFO] [voice_studio:35]: Background Worker Daemon stopped.
+[2026-07-22 17:33:20,330] [INFO] [voice_studio:19]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:33:20,330] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:20,330] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:20,334] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:33:20,334] [INFO] [voice_studio:28]: Background Worker Daemon started successfully.
+[2026-07-22 17:33:20,334] [INFO] [voice_studio:26]: Startup complete - ready to accept API requests.
+[2026-07-22 17:33:20,336] [WARNING] [voice_studio:43]: PyTorch is not installed in the environment. Returning CPU fallback status.
+[2026-07-22 17:33:20,336] [INFO] [voice_studio:22]: [fbf92427-58ff-4df5-b22c-e29caf81e70d] GET /api/v1/system/status - Status 200 in 0.0ms
+[2026-07-22 17:33:20,340] [INFO] [voice_studio:28]: Shutting down Voice Studio...
+[2026-07-22 17:33:20,841] [INFO] [voice_studio:35]: Background Worker Daemon stopped.
+[2026-07-22 17:33:20,853] [INFO] [voice_studio:19]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:33:20,853] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:20,853] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:20,857] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:33:20,857] [INFO] [voice_studio:28]: Background Worker Daemon started successfully.
+[2026-07-22 17:33:20,857] [INFO] [voice_studio:26]: Startup complete - ready to accept API requests.
+[2026-07-22 17:33:20,857] [INFO] [voice_studio:52]: Successfully validated WAV file 'voice_ref.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:33:20,857] [INFO] [voice_studio:53]: Saved voice audio file for ID '7b80a325-eaa6-4b69-8674-f626d1d8c32a' to: D:\Voice-Clone\backend\storage\voices\7b80a325-eaa6-4b69-8674-f626d1d8c32a\voice_ref.wav
+[2026-07-22 17:33:20,857] [INFO] [voice_studio:69]: Saved voice metadata for ID '7b80a325-eaa6-4b69-8674-f626d1d8c32a' to: D:\Voice-Clone\backend\storage\voices\7b80a325-eaa6-4b69-8674-f626d1d8c32a\voice.json
+[2026-07-22 17:33:20,864] [INFO] [voice_studio:80]: Successfully registered new voice profile ID '7b80a325-eaa6-4b69-8674-f626d1d8c32a' (Pipeline Voice)
+[2026-07-22 17:33:20,864] [INFO] [voice_studio:22]: [22bc365b-b9e5-4488-8ca1-be1a144d5391] POST /api/v1/voices/upload - Status 201 in 7.04ms
+[2026-07-22 17:33:20,864] [INFO] [voice_studio:26]: Preprocessed text script: 10 words, 63 chars.
+[2026-07-22 17:33:20,864] [INFO] [voice_studio:58]: Pipeline running synthesis clip '019aa19c-5804-4bca-9e43-11ab9d6d9bcc' via engine 'mock'...
+[2026-07-22 17:33:20,873] [INFO] [voice_studio:33]: Postprocessed synthesized WAV clip: 3.5s, 24000Hz
+[2026-07-22 17:33:20,881] [INFO] [voice_studio:82]: Pipeline completed clip '019aa19c-5804-4bca-9e43-11ab9d6d9bcc': 3.5s WAV saved.
+[2026-07-22 17:33:20,881] [INFO] [voice_studio:22]: [288587f0-5446-40bb-b1cb-e7477b462925] POST /api/v1/audio/generate - Status 200 in 17.02ms
+[2026-07-22 17:33:20,881] [INFO] [voice_studio:22]: [a4801224-a9d8-406d-a9e3-ba7d1bf6c262] GET /api/v1/audio/history - Status 200 in 0.0ms
+[2026-07-22 17:33:20,886] [INFO] [voice_studio:28]: Shutting down Voice Studio...
+[2026-07-22 17:33:21,358] [INFO] [voice_studio:35]: Background Worker Daemon stopped.
+[2026-07-22 17:33:21,366] [INFO] [voice_studio:19]: Starting Voice Studio in 'development' mode...
+[2026-07-22 17:33:21,367] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:21,367] [INFO] [voice_studio:38]: Storage directories verified under: D:\Voice-Clone\backend\storage
+[2026-07-22 17:33:21,367] [INFO] [voice_studio:28]: Database initialized cleanly at: sqlite:///D:\Voice-Clone\backend/storage/voice_studio.db
+[2026-07-22 17:33:21,368] [INFO] [voice_studio:28]: Background Worker Daemon started successfully.
+[2026-07-22 17:33:21,368] [INFO] [voice_studio:26]: Startup complete - ready to accept API requests.
+[2026-07-22 17:33:21,373] [INFO] [voice_studio:52]: Successfully validated WAV file 'job_ref.wav': 3.00s, 24000Hz, 1 ch
+[2026-07-22 17:33:21,373] [INFO] [voice_studio:53]: Saved voice audio file for ID '4e58356a-c326-4efb-b681-c7d1926ef7bf' to: D:\Voice-Clone\backend\storage\voices\4e58356a-c326-4efb-b681-c7d1926ef7bf\job_ref.wav
+[2026-07-22 17:33:21,374] [INFO] [voice_studio:69]: Saved voice metadata for ID '4e58356a-c326-4efb-b681-c7d1926ef7bf' to: D:\Voice-Clone\backend\storage\voices\4e58356a-c326-4efb-b681-c7d1926ef7bf\voice.json
+[2026-07-22 17:33:21,375] [INFO] [voice_studio:80]: Successfully registered new voice profile ID '4e58356a-c326-4efb-b681-c7d1926ef7bf' (Async Job Voice)
+[2026-07-22 17:33:21,375] [INFO] [voice_studio:22]: [89936920-250a-402a-95f5-51a541897426] POST /api/v1/voices/upload - Status 201 in 6.13ms
+[2026-07-22 17:33:21,378] [INFO] [voice_studio:15]: Queued job payload: ID '1604019b-dc74-4383-be22-85e35308fad5' (Queue depth: 1)
+[2026-07-22 17:33:21,378] [INFO] [voice_studio:22]: [3808b431-2d3a-4e01-8b31-aea41ddea7f7] POST /api/v1/jobs/enqueue - Status 202 in 0.61ms
+[2026-07-22 17:33:21,378] [ERROR] [voice_studio:106]: Worker failed on job '1604019b-dc74-4383-be22-85e35308fad5': Voice profile with ID '4e58356a-c326-4efb-b681-c7d1926ef7bf' was not found.
+[2026-07-22 17:33:21,389] [INFO] [voice_studio:22]: [de456d06-9a8c-4533-b4a7-3b6cf8003c4d] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 1.54ms
+[2026-07-22 17:33:21,495] [INFO] [voice_studio:22]: [1686cbca-4f1e-423b-be33-2a8313a71944] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 0.0ms
+[2026-07-22 17:33:21,599] [INFO] [voice_studio:22]: [8ab15da3-5d61-483e-942b-c8194dbe65eb] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 3.03ms
+[2026-07-22 17:33:21,705] [INFO] [voice_studio:22]: [86bb0c79-6aef-4f8d-9bde-18b898407227] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 0.0ms
+[2026-07-22 17:33:21,816] [INFO] [voice_studio:22]: [55484561-3222-4c46-bc38-db68b99a1e51] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 7.63ms
+[2026-07-22 17:33:21,930] [INFO] [voice_studio:22]: [d86722fb-cb59-4cbe-9bc0-2a5359bf0d88] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 4.49ms
+[2026-07-22 17:33:22,056] [INFO] [voice_studio:22]: [f7b17a63-b573-4c65-81f7-77040324925e] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 13.07ms
+[2026-07-22 17:33:22,165] [INFO] [voice_studio:22]: [5ac1769e-0c19-41b3-8654-882f866a5948] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 4.14ms
+[2026-07-22 17:33:22,279] [INFO] [voice_studio:22]: [7c5451b3-20e5-420b-9568-cf60e207b051] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 6.8ms
+[2026-07-22 17:33:22,393] [INFO] [voice_studio:22]: [c7fdcaad-6f63-4612-b048-7bf91b1ba6a6] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 2.31ms
+[2026-07-22 17:33:22,513] [INFO] [voice_studio:22]: [c74c88f8-9ba3-41c2-bb70-273bb228b55a] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 7.73ms
+[2026-07-22 17:33:22,618] [INFO] [voice_studio:22]: [669c7a10-ea14-49f5-ae05-1e05f520e0ce] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 0.0ms
+[2026-07-22 17:33:22,724] [INFO] [voice_studio:22]: [4127d700-759f-4d7d-a51b-2ca622f25131] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 3.2ms
+[2026-07-22 17:33:22,837] [INFO] [voice_studio:22]: [2b43fd5e-1dc4-4fb9-9980-726623a76454] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 5.92ms
+[2026-07-22 17:33:22,947] [INFO] [voice_studio:22]: [089d5321-f415-467d-beb1-3fabdf6cf423] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 0.0ms
+[2026-07-22 17:33:23,053] [INFO] [voice_studio:22]: [8d975b6b-0ad8-4383-94b1-61c7c48130fc] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 2.74ms
+[2026-07-22 17:33:23,160] [INFO] [voice_studio:22]: [9f9e703a-2ff1-4d97-bcaf-f57a8e7c31cd] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 6.79ms
+[2026-07-22 17:33:23,278] [INFO] [voice_studio:22]: [6df1ad85-0f26-4007-bac8-68196a35e8a6] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 7.45ms
+[2026-07-22 17:33:23,391] [INFO] [voice_studio:22]: [c307a26c-b58b-42c4-83f0-264d8e6b010d] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 5.4ms
+[2026-07-22 17:33:23,509] [INFO] [voice_studio:22]: [1f74eb4c-87e2-4454-8c33-ea008778b9a3] GET /api/v1/jobs/1604019b-dc74-4383-be22-85e35308fad5 - Status 200 in 6.68ms
+[2026-07-22 17:33:23,623] [INFO] [voice_studio:28]: Shutting down Voice Studio...
+[2026-07-22 17:33:23,917] [INFO] [voice_studio:35]: Background Worker Daemon stopped.
+[2026-07-22 17:33:23,936] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:33:23,936] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:33:23,936] [INFO] [voice_studio:48]: Registered audio engine plugin: 'f5tts' (F5-TTS Non-Autoregressive Zero-Shot Voice Cloning & TTS Engine)
+[2026-07-22 17:33:23,936] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:33:23,936] [INFO] [voice_studio:48]: Registered audio engine plugin: 'mock' (Mock Synthetic Audio Engine for testing & local development)
+[2026-07-22 17:33:23,940] [INFO] [voice_studio:26]: Preprocessed text script: 3 words, 16 chars.
+[2026-07-22 17:33:23,943] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-5\test_storage_manager_directori0
+[2026-07-22 17:33:23,947] [INFO] [voice_studio:38]: Storage directories verified under: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-5\test_save_and_retrieve_metadat0
+[2026-07-22 17:33:23,948] [INFO] [voice_studio:69]: Saved voice metadata for ID 'test-voice-123' to: C:\Users\ranjithks\AppData\Local\Temp\pytest-of-ranjithks\pytest-5\test_save_and_retrieve_metadat0\voices\test-voice-123\voice.json
+[2026-07-22 17:33:23,951] [INFO] [voice_studio:52]: Successfully validated WAV file 'test.wav': 3.00s, 24000Hz, 1 ch
