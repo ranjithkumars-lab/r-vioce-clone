@@ -65,11 +65,11 @@ export function ActiveJobsPanel() {
                   <div className="progress-bar-bg">
                     <div 
                       className="progress-bar-fill" 
-                      style={{ width: `${job.progress * 100}%` }}
+                      style={{ width: `${job.progress}%` }}
                     ></div>
                   </div>
                   <div className="progress-stats">
-                    <span>{Math.round(job.progress * 100)}%</span>
+                    <span>{Math.round(job.progress)}%</span>
                     {job.started_at && (
                       <span>
                         {formatDuration(

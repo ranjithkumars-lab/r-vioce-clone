@@ -6,6 +6,7 @@ interface JobStore {
   setJob: (job: JobRecord) => void;
   removeJob: (id: string) => void;
   updateJobProgress: (id: string, progress: number, status?: JobRecord['status']) => void;
+  updateJob: (id: string, updates: Partial<JobRecord>) => void;
   clearCompletedJobs: () => void;
 }
 
@@ -36,6 +37,18 @@ export const useJobStore = create<JobStore>((set) => ({
             progress,
             ...(status && { status })
           }
+        }
+      };
+    }),
+
+  updateJob: (id, updates) =>
+    set((state) => {
+      const job = state.activeJobs[id];
+      if (!job) return state;
+      return {
+        activeJobs: {
+          ...state.activeJobs,
+          [id]: { ...job, ...updates }
         }
       };
     }),

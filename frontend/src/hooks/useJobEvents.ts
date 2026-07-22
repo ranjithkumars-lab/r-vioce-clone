@@ -7,7 +7,7 @@ export function useJobEvents() {
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const reconnectAttempts = useRef(0);
   
-  const { setJob, updateJobProgress } = useJobStore();
+  const { setJob, updateJobProgress, updateJob } = useJobStore();
   const { addNotification } = useNotificationStore();
 
   const connect = useCallback(() => {
@@ -29,23 +29,40 @@ export function useJobEvents() {
       try {
         const data = JSON.parse(event.data);
         
-        // Handle different event types from the backend EventBus
-        if (data.type === 'JOB_CREATED' || data.type === 'JOB_UPDATED') {
-          setJob(data.payload);
-        } else if (data.type === 'JOB_PROGRESS') {
-          updateJobProgress(data.payload.id, data.payload.progress, data.payload.status);
-        } else if (data.type === 'JOB_FAILED') {
-          updateJobProgress(data.payload.id, data.payload.progress, 'FAILED');
-          addNotification({ 
-            type: 'error', 
-            message: `Job ${data.payload.id.substring(0,8)} failed: ${data.payload.error}` 
-          });
-        } else if (data.type === 'JOB_COMPLETED') {
-          updateJobProgress(data.payload.id, 1.0, 'COMPLETED');
-          addNotification({ 
-            type: 'success', 
-            message: `Audio generation completed!` 
-          });
+        // Handle the backend's "job_update" event
+        if (data.event === 'job_update' && data.data) {
+          const payload = data.data;
+          
+          if (payload.status === 'COMPLETED') {
+            // Ensure output_path is formatted as a relative URL if it's absolute
+            let audioUrl = payload.output_path;
+            if (audioUrl && audioUrl.includes('/workspace/backend/storage/generated/')) {
+              audioUrl = `/api/v1/media/${audioUrl.split('/').pop()}`;
+            }
+            
+            updateJob(payload.job_id, {
+              status: 'COMPLETED',
+              progress: 100,
+              result_audio_path: audioUrl
+            });
+            addNotification({ 
+              type: 'success', 
+              message: `Audio generation completed!` 
+            });
+          } else if (payload.status === 'FAILED') {
+            updateJob(payload.job_id, {
+              status: 'FAILED',
+              progress: 0,
+              error_message: payload.error
+            });
+            addNotification({ 
+              type: 'error', 
+              message: `Job ${payload.job_id.substring(0,8)} failed: ${payload.error || 'Unknown error'}` 
+            });
+          } else {
+            // Normal progress update
+            updateJobProgress(payload.job_id, payload.progress, payload.status);
+          }
         }
       } catch (err) {
         console.error('Failed to parse WS message', err);

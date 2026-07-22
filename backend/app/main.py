@@ -67,6 +67,12 @@ async def voice_studio_exception_handler(request: Request, exc: VoiceStudioExcep
 # Include API v1 router
 app.include_router(api_v1_router, prefix=settings.API_V1_STR)
 
+# Mount static media files
+from fastapi.staticfiles import StaticFiles
+import os
+os.makedirs(settings.STORAGE_DIR / "generated", exist_ok=True)
+app.mount(f"{settings.API_V1_STR}/media", StaticFiles(directory=settings.STORAGE_DIR / "generated"), name="media")
+
 # Observability: Prometheus Metrics
 from prometheus_client import make_asgi_app
 metrics_app = make_asgi_app()

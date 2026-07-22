@@ -65,7 +65,7 @@ export function HistoryPage() {
 
                   <div className="history-player-wrapper">
                     <AudioPlayer 
-                      src={`http://localhost:8000/${job.result_audio_path}`} 
+                      src={job.result_audio_path.startsWith('/') ? job.result_audio_path : `/api/v1/media/${job.result_audio_path.split('/').pop()}`} 
                       filename={`voice-studio-${job.id.substring(0, 8)}.wav`}
                     />
                   </div>

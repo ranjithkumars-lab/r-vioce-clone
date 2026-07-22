@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+import os
 from app.dependencies import get_job_service
 from app.schemas.audio import GenerateAudioRequest
 from app.schemas.job import JobResponse, JobStatusResponse
@@ -42,7 +43,7 @@ def get_job_status(
         job_id=job_record.id,
         status=job_record.status,
         progress_percentage=job_record.progress_percentage,
-        output_url=job_record.output_audio_path,
+        output_url=f"/api/v1/media/{os.path.basename(job_record.output_audio_path)}" if job_record.output_audio_path else None,
         error=job_record.error_message,
     )
 
@@ -65,7 +66,7 @@ def list_jobs(
                 job_id=j.id,
                 status=j.status,
                 progress_percentage=j.progress_percentage,
-                output_url=j.output_audio_path,
+                output_url=f"/api/v1/media/{os.path.basename(j.output_audio_path)}" if j.output_audio_path else None,
                 error=j.error_message,
             ) for j in jobs
         ]
