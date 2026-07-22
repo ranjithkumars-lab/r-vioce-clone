@@ -15,7 +15,7 @@ export function useJobEvents() {
 
     // Use dynamic relative WebSocket URL so it works regardless of the host IP
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}/ws/jobs`;
+    const wsUrl = `${protocol}//${window.location.host}/api/v1/ws/jobs`;
     const ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {

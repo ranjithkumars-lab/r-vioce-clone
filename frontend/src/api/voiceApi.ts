@@ -3,8 +3,8 @@ import type { Voice, VoiceCreate } from '../types/voice';
 
 export const voiceApi = {
   getVoices: async (): Promise<Voice[]> => {
-    const response = await apiClient.get<Voice[]>('/voices');
-    return response.data;
+    const response = await apiClient.get<{total: number, voices: Voice[]}>('/voices');
+    return response.data.voices;
   },
 
   getVoice: async (id: string): Promise<Voice> => {
