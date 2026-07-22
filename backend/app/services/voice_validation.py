@@ -22,28 +22,39 @@ class VoiceValidationService:
         if not ext:
             ext = '.tmp'
 
-        # Write to a temporary file so ffmpeg can seek and use correct demuxer by extension
-        fd, temp_path = tempfile.mkstemp(suffix=ext)
+        # Use temp files for input AND output to ensure valid WAV header (ffmpeg needs to seek to write correct RIFF chunk sizes)
+        fd_in, temp_in = tempfile.mkstemp(suffix=ext)
+        fd_out, temp_out = tempfile.mkstemp(suffix=".wav")
+        
+        # Close the raw file descriptors immediately; we will access the files by path
+        os.close(fd_in)
+        os.close(fd_out)
+        
         try:
-            with open(fd, 'wb') as f:
+            with open(temp_in, 'wb') as f:
                 f.write(file_bytes)
                 
             process = subprocess.Popen(
-                ['ffmpeg', '-y', '-i', temp_path, '-f', 'wav', 'pipe:1', '-v', 'error'],
+                ['ffmpeg', '-y', '-i', temp_in, '-f', 'wav', temp_out, '-v', 'error'],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE
             )
-            out, err = process.communicate()
+            _, err = process.communicate()
             if process.returncode != 0:
                 err_msg = err.decode('utf-8', errors='ignore').strip()
                 raise Exception(f"FFmpeg failed ({err_msg or 'unknown error'})")
-            return out
+                
+            with open(temp_out, 'rb') as f:
+                out_bytes = f.read()
+            return out_bytes
         except Exception as e:
             logger.error(f"Error during audio conversion for '{filename}': {e}")
             raise InvalidAudioFileException(f"Audio conversion failed for '{filename}': {e}")
         finally:
-            if os.path.exists(temp_path):
-                os.remove(temp_path)
+            if os.path.exists(temp_in):
+                os.remove(temp_in)
+            if os.path.exists(temp_out):
+                os.remove(temp_out)
 
     def validate_wav_file(self, file_bytes: bytes, filename: str) -> Tuple[Dict[str, Any], bytes]:
         """Validate uploaded audio bytes, converting them to WAV if necessary. Returns metadata and the final WAV bytes."""
