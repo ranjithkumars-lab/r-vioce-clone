@@ -56,8 +56,21 @@ class MockAudioEngine(BaseAudioEngine):
         duration_sec = max(2.0, len(words) * 0.35 / speed)
         num_samples = int(duration_sec * sample_rate)
 
-        # Generate silent/sine-like 16-bit PCM frames
-        raw_frames = b"\x00\x00" * num_samples
+        import math
+        import struct
+
+        # Pre-compute one cycle of 440 Hz sine wave for a beep tone
+        cycle_samples = int(sample_rate / 440.0)
+        cycle_frames = []
+        for i in range(cycle_samples):
+            val = int(32767.0 * 0.2 * math.sin(2.0 * math.pi * 440.0 * i / sample_rate))
+            cycle_frames.append(struct.pack('<h', val))
+            
+        cycle_bytes = b''.join(cycle_frames)
+        
+        # Repeat the cycle bytes to fill the duration
+        num_cycles = num_samples // cycle_samples + 1
+        raw_frames = (cycle_bytes * num_cycles)[:num_samples * 2]
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         with wave.open(str(output_path), "wb") as wav_out:
