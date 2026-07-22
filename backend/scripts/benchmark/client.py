@@ -41,9 +41,8 @@ class BenchmarkClient:
         payload = {
             "text": text,
             "engine": engine,
+            "voice_id": self.default_voice_id or "benchmark_dummy_voice"
         }
-        if self.default_voice_id:
-            payload["voice_id"] = self.default_voice_id
 
         # 1. Submit Job
         try:
