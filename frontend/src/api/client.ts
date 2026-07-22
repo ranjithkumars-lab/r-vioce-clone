@@ -11,8 +11,10 @@ const apiClient = axios.create({
 // Interceptor for request ID and logging
 apiClient.interceptors.request.use(
   (config) => {
-    // Generate request ID for tracing
-    const requestId = crypto.randomUUID();
+    // Generate request ID for tracing. Fallback to Math.random if crypto is unavailable (HTTP context)
+    const requestId = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : Math.random().toString(36).substring(2) + Date.now().toString(36);
     config.headers['X-Request-ID'] = requestId;
     return config;
   },
