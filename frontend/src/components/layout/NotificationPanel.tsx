@@ -24,7 +24,7 @@ export function NotificationPanel() {
             {getIcon(notification.type)}
           </div>
           <div className="toast-message">
-            {notification.message}
+            {typeof notification.message === 'string' ? notification.message : JSON.stringify(notification.message)}
           </div>
           <button 
             className="toast-close" 

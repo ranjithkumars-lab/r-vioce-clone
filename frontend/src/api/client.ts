@@ -23,12 +23,29 @@ apiClient.interceptors.request.use(
   }
 );
 
+export const getErrorMessage = (error: any): string => {
+  const detail = error.response?.data?.detail;
+  if (typeof detail === 'string') return detail;
+  if (Array.isArray(detail)) {
+    return detail
+      .map((item: any) => {
+        if (typeof item === 'string') return item;
+        const field = item.loc ? item.loc.filter((l: string) => l !== 'body').join('.') : '';
+        return field ? `${field}: ${item.msg}` : item.msg || JSON.stringify(item);
+      })
+      .join('; ');
+  }
+  if (detail && typeof detail === 'object') {
+    return detail.message || JSON.stringify(detail);
+  }
+  return error.message || 'An unexpected error occurred';
+};
+
 // Interceptor for global error handling
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    // We can add global error toast notifications here
-    const message = error.response?.data?.detail || error.message || 'An unexpected error occurred';
+    const message = getErrorMessage(error);
     console.error(`[API Error] ${message}`);
     
     // Optionally transform errors or handle auth expiration

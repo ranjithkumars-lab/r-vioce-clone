@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { voiceApi } from '../../api/voiceApi';
+import { getErrorMessage } from '../../api/client';
 import { useNotificationStore } from '../../stores/useNotificationStore';
 import { X, UploadCloud, Info, Play, Pause, FileAudio } from 'lucide-react';
 import './UploadVoiceModal.css';
@@ -39,7 +40,7 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
       resetAndClose();
     },
     onError: (err: any) => {
-      const msg = err.response?.data?.detail || err.message || 'Failed to upload voice.';
+      const msg = getErrorMessage(err);
       addNotification({ type: 'error', message: msg });
       setUploadProgress(0); // reset progress on failure
     },

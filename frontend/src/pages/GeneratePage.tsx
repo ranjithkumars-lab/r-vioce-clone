@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { voiceApi } from '../api/voiceApi';
 import { jobApi } from '../api/jobApi';
+import { getErrorMessage } from '../api/client';
 import type { JobCreate } from '../types/job';
 import { useNotificationStore } from '../stores/useNotificationStore';
 import { Card } from '../components/common/Card';
@@ -32,7 +33,7 @@ export function GeneratePage() {
     onError: (err: any) => {
       addNotification({ 
         type: 'error', 
-        message: err.response?.data?.detail || 'Failed to submit job.' 
+        message: getErrorMessage(err) 
       });
     },
   });
