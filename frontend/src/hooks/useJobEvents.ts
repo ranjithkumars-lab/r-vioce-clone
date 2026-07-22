@@ -79,7 +79,10 @@ export function useJobEvents() {
         clearTimeout(reconnectTimeoutRef.current);
       }
       if (wsRef.current) {
-        wsRef.current.close();
+        // Only close if it's actually open to avoid the "closed before established" warning in React StrictMode
+        if (wsRef.current.readyState === WebSocket.OPEN) {
+            wsRef.current.close();
+        }
       }
     };
   }, [connect]);
