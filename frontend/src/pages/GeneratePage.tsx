@@ -5,6 +5,7 @@ import { jobApi } from '../api/jobApi';
 import { getErrorMessage } from '../api/client';
 import type { JobCreate } from '../types/job';
 import { useNotificationStore } from '../stores/useNotificationStore';
+import { useJobStore } from '../stores/useJobStore';
 import { Card } from '../components/common/Card';
 import { Mic2, Settings2, Play } from 'lucide-react';
 import './GeneratePage.css';
@@ -25,10 +26,10 @@ export function GeneratePage() {
 
   const mutation = useMutation({
     mutationFn: jobApi.createJob,
-    onSuccess: () => {
+    onSuccess: (newJob) => {
       addNotification({ type: 'success', message: 'Job submitted successfully!' });
       reset({ script: '' });
-      // In Step 2, this job will flow into the JobStore
+      useJobStore.getState().setJob(newJob);
     },
     onError: (err: any) => {
       addNotification({ 
