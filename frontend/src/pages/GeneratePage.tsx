@@ -65,7 +65,8 @@ export function GeneratePage() {
                 className={errors.voice_id ? 'input-error' : ''}
               >
                 <option value="">-- Choose a Voice --</option>
-                {voices?.filter(v => v.is_active).map(voice => (
+                {/* Handle case where voices might be cached as {voices: []} from before the fix */}
+                {((Array.isArray(voices) ? voices : (voices as any)?.voices) || []).filter((v: any) => v.is_active).map((voice: any) => (
                   <option key={voice.id} value={voice.id}>
                     {voice.name} ({voice.model_type})
                   </option>

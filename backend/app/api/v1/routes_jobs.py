@@ -45,3 +45,29 @@ def get_job_status(
         output_url=job_record.output_audio_path,
         error=job_record.error_message,
     )
+
+@router.get("", response_model=list[JobStatusResponse], summary="List Jobs")
+def list_jobs(
+    limit: int = 50,
+    skip: int = 0,
+    job_service: JobService = Depends(get_job_service),
+):
+    """List recent background jobs."""
+    # Since JobService might not have list_jobs yet, let's just return empty array or implement a basic fetch
+    # We will fetch directly from DB for now to unblock the frontend
+    from app.database.session import SessionLocal
+    from app.models.job import JobModel
+    db = SessionLocal()
+    try:
+        jobs = db.query(JobModel).order_by(JobModel.created_at.desc()).offset(skip).limit(limit).all()
+        return [
+            JobStatusResponse(
+                job_id=j.id,
+                status=j.status,
+                progress_percentage=j.progress,
+                output_url=j.result_audio_path,
+                error=j.error_message,
+            ) for j in jobs
+        ]
+    finally:
+        db.close()
