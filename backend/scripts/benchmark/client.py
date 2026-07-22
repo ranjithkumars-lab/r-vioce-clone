@@ -16,7 +16,7 @@ class BenchmarkClient:
 
     async def setup(self):
         """Initialize the client and grab a voice ID to use for TTS."""
-        self.client = httpx.AsyncClient(base_url=self.base_url, timeout=30.0)
+        self.client = httpx.AsyncClient(base_url=self.base_url, timeout=60.0)
         try:
             resp = await self.client.get("/api/v1/voices")
             resp.raise_for_status()
