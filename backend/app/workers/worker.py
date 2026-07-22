@@ -43,9 +43,62 @@ class BackgroundWorkerDaemon:
         while self._running:
             job_data = self.queue_svc.dequeue(block=True, timeout=0.5)
             if job_data:
-                self._process_job(job_data)
+                job_type = job_data.get("job_type", "tts")
+                if job_type == "tts":
+                    self._process_tts_job(job_data)
+                elif job_type == "transcription":
+                    self._process_transcription_job(job_data)
 
-    def _process_job(self, job_data: Dict[str, Any]) -> None:
+    def _process_transcription_job(self, job_data: Dict[str, Any]) -> None:
+        from app.managers.gpu_scheduler import gpu_scheduler
+        from app.core.execution_context import ExecutionContext
+        from app.repositories.voice_repository import VoiceRepository
+        from pathlib import Path
+
+        voice_id = job_data["voice_id"]
+        file_path = job_data["file_path"]
+        
+        db = SessionLocal()
+        voice_repo = VoiceRepository(db)
+        start_time = time.time()
+        
+        try:
+            logger.info(f"Worker starting transcription job for voice '{voice_id}'.")
+            pipeline = self.pipeline_factory(db)
+            engine = pipeline.model_manager.get_engine("faster-whisper")
+            
+            with gpu_scheduler.reserve(500.0, "faster-whisper") as device_index:
+                context = ExecutionContext(
+                    device_index=device_index,
+                    engine_name="faster-whisper",
+                    job_id=voice_id,
+                )
+                
+                pipeline.model_manager.load_model_to_device("faster-whisper", device_index)
+                
+                transcript = engine.transcribe(
+                    audio_path=Path(file_path),
+                    context=context
+                )
+                
+            voice_record = voice_repo.get_by_id(voice_id)
+            if voice_record:
+                voice_record.reference_text = transcript
+                voice_record.status = "READY"
+                db.commit()
+                global_event_bus.publish("voice_update", {"voice_id": voice_id, "status": "READY", "reference_text": transcript})
+                logger.info(f"Worker completed transcription for '{voice_id}' in {time.time() - start_time:.2f}s.")
+        except Exception as e:
+            logger.error(f"Worker failed transcription job '{voice_id}': {e}")
+            voice_record = voice_repo.get_by_id(voice_id)
+            if voice_record:
+                voice_record.status = "FAILED"
+                db.commit()
+                global_event_bus.publish("voice_update", {"voice_id": voice_id, "status": "FAILED", "error": str(e)})
+        finally:
+            db.close()
+
+    def _process_tts_job(self, job_data: Dict[str, Any]) -> None:
         from app.managers.gpu_scheduler import gpu_scheduler
         from app.core.execution_context import ExecutionContext
 

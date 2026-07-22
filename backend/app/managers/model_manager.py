@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Optional, Type
 
 from app.core.exceptions import EngineNotFoundException
 from app.core.logging import logger
-from app.engines.base_engine import BaseAudioEngine
+from app.engines.base_engine import BaseEngine, BaseAudioEngine
 from app.engines.plugins.f5tts import F5TTSAudioEngine
 from app.engines.plugins.mock import MockAudioEngine
 
@@ -14,7 +14,7 @@ class ModelManager:
     """Model Manager handling dynamic plugin discovery, engine registration, and loading lifecycle."""
 
     def __init__(self):
-        self._engines: Dict[str, BaseAudioEngine] = {}
+        self._engines: Dict[str, BaseEngine] = {}
         self._active_engine_name: Optional[str] = None
         self._discover_and_register_plugins()
 
@@ -33,21 +33,23 @@ class ModelManager:
                     obj = getattr(mod, obj_name)
                     if (
                         isinstance(obj, type)
-                        and issubclass(obj, BaseAudioEngine)
+                        and issubclass(obj, BaseEngine)
+                        and obj is not BaseEngine
                         and obj is not BaseAudioEngine
+                        and obj.__name__ != "BaseSTTEngine"
                     ):
                         instance = obj()
                         self.register_engine(instance)
         except Exception as e:
             logger.debug(f"Plugin auto-discovery scan complete: {e}")
 
-    def register_engine(self, engine: BaseAudioEngine) -> None:
+    def register_engine(self, engine: BaseEngine) -> None:
         """Register an engine instance."""
         name = engine.engine_name.lower()
         self._engines[name] = engine
         logger.info(f"Registered audio engine plugin: '{name}' ({engine.description})")
 
-    def get_engine(self, name: str) -> BaseAudioEngine:
+    def get_engine(self, name: str) -> BaseEngine:
         """Fetch engine plugin by name."""
         key = name.lower()
         if key not in self._engines:

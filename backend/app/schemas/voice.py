@@ -16,6 +16,8 @@ class VoiceProfileResponse(VoiceProfileBase):
     sample_rate: int
     channels: int
     file_path: str
+    reference_text: Optional[str] = None
+    transcript_source: str
     status: str
     created_at: datetime
     updated_at: datetime

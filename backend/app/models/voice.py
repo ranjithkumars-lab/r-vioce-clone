@@ -15,6 +15,8 @@ class VoiceRecord(Base):
     sample_rate = Column(Integer, nullable=False)
     channels = Column(Integer, default=1, nullable=False)
     file_path = Column(String(255), nullable=False)
-    status = Column(String(20), default="ACTIVE", nullable=False)
+    reference_text = Column(String(1000), nullable=True)
+    transcript_source = Column(String(20), default="manual", nullable=False) # manual, whisper, edited
+    status = Column(String(20), default="PROCESSING", nullable=False) # UPLOADING, PROCESSING, READY, FAILED
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)

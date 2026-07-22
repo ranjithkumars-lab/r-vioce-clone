@@ -4,13 +4,13 @@ from typing import Any, Dict, Optional
 from app.core.execution_context import ExecutionContext
 
 
-class BaseAudioEngine(ABC):
-    """Abstract Base Class for all Voice Studio audio synthesis engine plugins."""
+class BaseEngine(ABC):
+    """Abstract Base Class for all Voice Studio AI engine plugins (TTS, STT, etc)."""
 
     @property
     @abstractmethod
     def engine_name(self) -> str:
-        """Unique key name of the engine plugin (e.g., 'f5tts', 'mock', 'xtts')."""
+        """Unique key name of the engine plugin (e.g., 'f5tts', 'faster-whisper')."""
         pass
 
     @property
@@ -34,6 +34,9 @@ class BaseAudioEngine(ABC):
         """Unload engine model weights and release memory/VRAM."""
         pass
 
+
+class BaseAudioEngine(BaseEngine):
+    """Abstract Base Class for TTS audio synthesis engine plugins."""
     @abstractmethod
     def synthesize(
         self,
@@ -45,4 +48,17 @@ class BaseAudioEngine(ABC):
         context: Optional[ExecutionContext] = None,
     ) -> Path:
         """Synthesize audio from text script using reference voice audio file."""
+        pass
+
+
+class BaseSTTEngine(BaseEngine):
+    """Abstract Base Class for Speech-to-Text (STT) engine plugins."""
+    @abstractmethod
+    def transcribe(
+        self,
+        audio_path: Path,
+        options: Optional[Dict[str, Any]] = None,
+        context: Optional[ExecutionContext] = None,
+    ) -> str:
+        """Transcribe audio file to text."""
         pass

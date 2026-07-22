@@ -57,13 +57,17 @@ class VoiceGenerationPipeline:
         output_filename = f"gen_{clip_id}.wav"
         target_output_path = self.storage_manager.generated_dir / output_filename
 
+        # Add reference text to options for engines like F5-TTS
+        merged_options = options or {}
+        merged_options["reference_text"] = voice_record.reference_text
+
         logger.info(f"Pipeline running synthesis clip '{clip_id}' via engine '{engine.engine_name}'...")
         synthesized_path = engine.synthesize(
             text=clean_text,
             reference_audio_path=ref_audio_path,
             output_path=target_output_path,
             speed=speed,
-            options=options,
+            options=merged_options,
             context=context,
         )
 

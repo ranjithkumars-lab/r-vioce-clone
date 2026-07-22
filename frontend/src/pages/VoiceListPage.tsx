@@ -54,13 +54,18 @@ export function VoiceListPage() {
               <div key={voice.id} className="glass-panel voice-card group">
                 <div className="voice-card-header">
                   <h3>{voice.name}</h3>
-                  <span className={`status-dot ${voice.status === 'ACTIVE' ? 'active' : 'inactive'}`}></span>
+                  <span className={`status-dot ${voice.status === 'READY' || voice.status === 'ACTIVE' ? 'active' : voice.status === 'PROCESSING' ? 'processing' : 'inactive'}`} title={`Status: ${voice.status}`}></span>
                 </div>
                 <p className="voice-description">
                   {voice.gender !== 'unspecified' ? voice.gender : 'Voice Profile'} • {voice.language} • {voice.duration.toFixed(1)}s
                 </p>
                 <div className="voice-card-footer">
                   <span className="badge-model">{voice.engine}</span>
+                  {voice.transcript_source && (
+                    <span className="badge-model" style={{marginLeft: '4px', backgroundColor: 'rgba(59, 130, 246, 0.2)'}}>
+                      {voice.transcript_source === 'whisper' ? 'Auto-STT' : 'Manual'}
+                    </span>
+                  )}
                   <span className="text-muted text-small">
                     {new Date(voice.created_at).toLocaleDateString()}
                   </span>

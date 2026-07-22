@@ -1,3 +1,4 @@
+from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, UploadFile, status
 from app.dependencies import get_voice_service
 from app.schemas.voice import VoiceListResponse, VoiceProfileResponse, VoiceUploadResponse
@@ -13,6 +14,7 @@ async def upload_voice(
     language: str = Form("en", description="ISO language code"),
     gender: str = Form("unspecified", description="Gender descriptor"),
     engine: str = Form("f5tts", description="Target TTS engine"),
+    transcript: Optional[str] = Form(None, description="Optional reference transcript. If blank, Whisper will auto-transcribe."),
     voice_service: VoiceService = Depends(get_voice_service),
 ):
     """Upload reference WAV audio file, validate audio constraints, generate voice.json, and store profile."""
@@ -26,6 +28,7 @@ async def upload_voice(
         language=language,
         gender=gender,
         engine=engine,
+        transcript=transcript,
     )
 
     return VoiceUploadResponse(

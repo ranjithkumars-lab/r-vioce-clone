@@ -30,6 +30,7 @@ class VoiceService:
         language: str = "en",
         gender: str = "unspecified",
         engine: str = "f5tts",
+        transcript: Optional[str] = None,
     ) -> VoiceRecord:
         """Validate, store audio file, write voice.json profile, and persist VoiceRecord database entry."""
         # 1. Validate audio (and convert if necessary)
@@ -63,7 +64,12 @@ class VoiceService:
         }
         self.storage_manager.save_voice_metadata(voice_id, metadata)
 
-        # 4. Save to Database
+        # 4. Determine Transcript & Status
+        reference_text = transcript.strip() if transcript else None
+        transcript_source = "manual" if reference_text else "whisper"
+        status = "READY" if reference_text else "PROCESSING"
+
+        # 5. Save to Database
         voice_record = VoiceRecord(
             id=voice_id,
             name=name,
@@ -74,11 +80,23 @@ class VoiceService:
             sample_rate=audio_info["sample_rate"],
             channels=audio_info["channels"],
             file_path=str(audio_path),
-            status="ACTIVE",
+            reference_text=reference_text,
+            transcript_source=transcript_source,
+            status=status,
             created_at=now,
             updated_at=now,
         )
         saved_record = self.repository.create(voice_record)
+        
+        # 6. Enqueue Async Transcription if needed
+        if status == "PROCESSING":
+            from app.workers.queue_service import queue_service
+            queue_service.enqueue({
+                "job_type": "transcription",
+                "voice_id": voice_id,
+                "file_path": str(audio_path)
+            })
+
         logger.info(f"Successfully registered new voice profile ID '{voice_id}' ({name})")
         return saved_record
 

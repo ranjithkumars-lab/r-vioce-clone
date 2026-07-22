@@ -16,6 +16,7 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
   const [language, setLanguage] = useState('en');
   const [gender, setGender] = useState('unspecified');
   const [engine, setEngine] = useState('f5tts');
+  const [transcript, setTranscript] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -51,6 +52,7 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
     setLanguage('en');
     setGender('unspecified');
     setEngine('f5tts');
+    setTranscript('');
     setFile(null);
     setUploadProgress(0);
     setIsPlaying(false);
@@ -126,6 +128,9 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
     formData.append('language', language);
     formData.append('gender', gender);
     formData.append('engine', engine);
+    if (transcript.trim()) {
+      formData.append('transcript', transcript.trim());
+    }
     formData.append('file', file);
 
     mutation.mutate(formData);
@@ -203,6 +208,18 @@ export function UploadVoiceModal({ isOpen, onClose }: UploadVoiceModalProps) {
                   <option value="mock">Mock Engine</option>
                 </select>
               </div>
+            </div>
+
+            <div className="form-group">
+              <label>Reference Transcript (Optional)</label>
+              <textarea 
+                value={transcript}
+                onChange={e => setTranscript(e.target.value)}
+                placeholder="Type the exact words spoken in the reference audio. If left blank, it will be auto-transcribed."
+                disabled={mutation.isPending}
+                rows={3}
+                className="transcript-input"
+              />
             </div>
 
             <div className="form-group">

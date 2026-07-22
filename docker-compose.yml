@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 x-common-env: &common-env
   APP_ENV: ${APP_ENV:-production}
@@ -23,7 +23,7 @@ services:
     volumes:
       - voice-studio-data:/app/storage
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/live"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/live" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -43,7 +43,7 @@ services:
           devices:
             - driver: nvidia
               count: all
-              capabilities: [gpu]
+              capabilities: [ gpu ]
     depends_on:
       - api
 
