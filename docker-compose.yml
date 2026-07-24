@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     image: voicestudio-api:latest
     ports:
-      - "8000:8000"
+      - "18000:8000"
     environment:
       APP_ENV: ${APP_ENV:-production}
       API_V1_STR: /api/v1
@@ -50,7 +50,7 @@ services:
       dockerfile: Dockerfile
     image: voicestudio-frontend:latest
     ports:
-      - "80:80"
+      - "18080:80"
     depends_on:
       - api
 
@@ -60,7 +60,7 @@ services:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-data:/prometheus
     ports:
-      - "9090:9090"
+      - "19090:9090"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -68,7 +68,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     ports:
-      - "3000:3000"
+      - "13000:3000"
     volumes:
       - grafana-data:/var/lib/grafana
     environment:
@@ -79,7 +79,7 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "16379:6379"
     volumes:
       - redis-data:/data
 
