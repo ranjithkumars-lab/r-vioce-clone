@@ -2,8 +2,13 @@
 FROM python:3.11-slim AS builder
 
 WORKDIR /app
-COPY requirements.txt .
 
+# 1. Heavy PyTorch & AI base dependencies (850MB+) - Cached separately
+COPY requirements-base.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements-base.txt
+
+# 2. Lightweight app dependencies - Cached separately
+COPY requirements.txt .
 RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 # Stage 2: Shared Base Runtime Layer
