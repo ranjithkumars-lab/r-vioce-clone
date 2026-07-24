@@ -28,6 +28,7 @@ export function useJobEvents() {
     ws.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
+        if (data.event === 'ping') return;
         
         // Handle the backend's "job_update" event
         if (data.event === 'job_update' && data.data) {
