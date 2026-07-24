@@ -20,6 +20,7 @@ services:
       QUEUE_BACKEND: ${QUEUE_BACKEND:-sqlite}
       REDIS_URL: redis://redis:6379/0
       HF_HOME: /app/storage/huggingface
+      MPLCONFIGDIR: /app/storage/matplotlib
     volumes:
       - /raid/docker-project:/app/storage
     healthcheck:
@@ -45,6 +46,7 @@ services:
       QUEUE_BACKEND: ${QUEUE_BACKEND:-sqlite}
       REDIS_URL: redis://redis:6379/0
       HF_HOME: /app/storage/huggingface
+      MPLCONFIGDIR: /app/storage/matplotlib
     volumes:
       - /raid/docker-project:/app/storage
     depends_on:
