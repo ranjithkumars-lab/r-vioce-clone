@@ -32,9 +32,11 @@ class FasterWhisperEngine(BaseSTTEngine):
         
         try:
             from faster_whisper import WhisperModel
-            # Force CPU for whisper 'base' model. It takes <1s on CPU for reference audio,
-            # and avoids complex CTranslate2 / PyTorch CUDA library conflicts in Docker.
-            self._model = WhisperModel("base", device="cpu", compute_type="int8")
+            device = "cuda" if context and context.device_str.startswith("cuda") else "cpu"
+            device_index = context.device_index if context and device == "cuda" else 0
+            
+            # Using 'base' model for speed in preprocessing
+            self._model = WhisperModel("base", device=device, device_index=device_index, compute_type="float16" if device == "cuda" else "int8")
             logger.info("Faster-Whisper model loaded successfully.")
             return True
         except Exception as e:
