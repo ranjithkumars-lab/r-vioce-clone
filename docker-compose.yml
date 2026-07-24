@@ -17,7 +17,7 @@ services:
       QUEUE_BACKEND: ${QUEUE_BACKEND:-sqlite}
       REDIS_URL: redis://redis:6379/0
     volumes:
-      - voice-studio-data:/app/storage
+      - /raid/docker-project:/app/storage
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/live"]
       interval: 10s
@@ -40,7 +40,7 @@ services:
       QUEUE_BACKEND: ${QUEUE_BACKEND:-sqlite}
       REDIS_URL: redis://redis:6379/0
     volumes:
-      - voice-studio-data:/app/storage
+      - /raid/docker-project:/app/storage
     depends_on:
       - api
 
@@ -84,7 +84,6 @@ services:
       - redis-data:/data
 
 volumes:
-  voice-studio-data:
   prometheus-data:
   grafana-data:
   redis-data:
