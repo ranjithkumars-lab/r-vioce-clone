@@ -133,6 +133,11 @@ class BackgroundWorkerDaemon:
                     job_id=job_id,
                 )
 
+                # Explicitly load model on reserved device before running pipeline
+                pipeline = self.pipeline_factory(db)
+                logger.info(f"Worker loading model '{engine_name}' on GPU device {device_index}...")
+                pipeline.model_manager.load_model_to_device(engine_name, device_index)
+
                 # 2. Update status: LOADING_MODEL (25%)
                 job_repo.update_status(job_id, JobStatus.LOADING_MODEL.value, progress=25)
                 global_event_bus.publish("job_update", {"job_id": job_id, "status": JobStatus.LOADING_MODEL.value, "progress": 25})

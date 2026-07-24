@@ -79,7 +79,11 @@ class QueueService:
                     logger.info(f"Dequeued job payload via Redis: ID '{payload.get('job_id')}' (Type: {payload.get('job_type', 'tts')})")
                     return payload
             except Exception as e:
-                logger.warning(f"Redis dequeue failed ({e}), checking DB queue.")
+                err_msg = str(e)
+                if "Timeout" in err_msg or "timed out" in err_msg:
+                    logger.debug("Redis queue poll timed out (idle).")
+                else:
+                    logger.warning(f"Redis dequeue error ({e}), checking DB queue.")
 
         # 2. Try DB Queue
         try:
