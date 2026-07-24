@@ -11,6 +11,8 @@ export interface Voice {
   file_path: string;
   created_at: string;
   updated_at: string;
+  transcript_source?: string;
+  reference_text?: string;
 }
 
 export interface VoiceCreate {

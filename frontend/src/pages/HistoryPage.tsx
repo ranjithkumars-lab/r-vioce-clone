@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { jobApi } from '../api/jobApi';
 import { Card } from '../components/common/Card';
 import { AudioPlayer } from '../components/audio/AudioPlayer';
-import { ListMusic, Clock, Settings } from 'lucide-react';
+import { ListMusic, Clock } from 'lucide-react';
 import { formatDate } from '../utils/formatDate';
 import './HistoryPage.css';
 
@@ -65,7 +65,7 @@ export function HistoryPage() {
 
                   <div className="history-player-wrapper">
                     <AudioPlayer 
-                      src={job.result_audio_path.startsWith('/') ? job.result_audio_path : `/api/v1/media/${job.result_audio_path.split('/').pop()}`} 
+                      src={job.result_audio_path!.startsWith('/') ? job.result_audio_path! : `/api/v1/media/${job.result_audio_path!.split('/').pop()}`} 
                       filename={`voice-studio-${job.id.substring(0, 8)}.wav`}
                     />
                   </div>

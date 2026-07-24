@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useJobStore } from '../../stores/useJobStore';
 import { Card } from '../common/Card';
 import { Loader2, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
