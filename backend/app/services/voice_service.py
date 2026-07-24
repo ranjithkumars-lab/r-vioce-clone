@@ -92,6 +92,7 @@ class VoiceService:
         if status == "PROCESSING":
             from app.workers.queue_service import queue_service
             queue_service.enqueue({
+                "job_id": str(uuid.uuid4()),
                 "job_type": "transcription",
                 "voice_id": voice_id,
                 "file_path": str(audio_path)

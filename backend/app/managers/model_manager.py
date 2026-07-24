@@ -46,6 +46,8 @@ class ModelManager:
     def register_engine(self, engine: BaseEngine) -> None:
         """Register an engine instance."""
         name = engine.engine_name.lower()
+        if name in self._engines:
+            return
         self._engines[name] = engine
         logger.info(f"Registered audio engine plugin: '{name}' ({engine.description})")
 

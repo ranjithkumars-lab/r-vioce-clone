@@ -15,3 +15,13 @@ class JobRecord(Base):
     output_audio_path = Column(String(255), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+
+class QueueJobRecord(Base):
+    __tablename__ = "queue_jobs"
+
+    id = Column(String(36), primary_key=True, index=True)
+    payload = Column(Text, nullable=False)
+    status = Column(String(20), default="QUEUED", nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+

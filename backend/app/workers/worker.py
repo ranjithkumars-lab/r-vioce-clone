@@ -43,7 +43,9 @@ class BackgroundWorkerDaemon:
         while self._running:
             job_data = self.queue_svc.dequeue(block=True, timeout=0.5)
             if job_data:
+                job_id = job_data.get("job_id", "unknown")
                 job_type = job_data.get("job_type", "tts")
+                logger.info(f"Worker thread dequeued job ID '{job_id}' (Type: {job_type}). Processing...")
                 if job_type == "tts":
                     self._process_tts_job(job_data)
                 elif job_type == "transcription":
