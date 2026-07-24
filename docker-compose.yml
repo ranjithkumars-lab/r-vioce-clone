@@ -6,9 +6,11 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     image: voicestudio-api:latest
+    runtime: nvidia
     ports:
       - "11333:8000"
     environment:
+      NVIDIA_VISIBLE_DEVICES: "1,5"
       APP_ENV: ${APP_ENV:-production}
       API_V1_STR: /api/v1
       LOG_LEVEL: info
@@ -31,7 +33,7 @@ services:
     image: voicestudio-worker:latest
     runtime: nvidia
     environment:
-      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_VISIBLE_DEVICES: "1,5"
       APP_ENV: ${APP_ENV:-production}
       API_V1_STR: /api/v1
       LOG_LEVEL: info
