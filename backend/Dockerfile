@@ -1,18 +1,18 @@
 # syntax=docker/dockerfile:1
 
-# Stage 1: Builder
+# Stage 1: Shared Builder with persistent pip wheel cache
 FROM python:3.11-slim AS builder
 
 WORKDIR /app
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install --prefix=/install -r requirements.txt
 
-# Stage 2: Runtime
-FROM python:3.11-slim
+# Stage 2: Shared Base Runtime Layer
+FROM python:3.11-slim AS base-runtime
 
-# Create a non-root user and install ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/* && \
+RUN apt-get update && apt-get install -y ffmpeg libgomp1 && rm -rf /var/lib/apt/lists/* && \
     addgroup --system appgroup && adduser --system --group appuser
 
 WORKDIR /app
@@ -21,11 +21,15 @@ COPY --from=builder /install /usr/local
 
 COPY . .
 
-# Set ownership
 RUN chown -R appuser:appgroup /app
 
 USER appuser
 
+# Stage 3: API Container Target
+FROM base-runtime AS api
 EXPOSE 8000
-
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# Stage 4: Worker Container Target
+FROM base-runtime AS worker
+CMD ["python", "worker_main.py"]

@@ -5,6 +5,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      target: api
     image: voicestudio-api:latest
     runtime: nvidia
     ports:
@@ -30,7 +31,8 @@ services:
   worker:
     build:
       context: ./backend
-      dockerfile: Dockerfile.worker
+      dockerfile: Dockerfile
+      target: worker
     image: voicestudio-worker:latest
     runtime: nvidia
     environment:
