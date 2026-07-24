@@ -9,6 +9,7 @@ import './VoiceListPage.css';
 
 export function VoiceListPage() {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [voiceToDelete, setVoiceToDelete] = useState<{id: string, name: string} | null>(null);
   const queryClient = useQueryClient();
   const { addNotification } = useNotificationStore();
 
@@ -22,17 +23,17 @@ export function VoiceListPage() {
     onSuccess: () => {
       addNotification({ type: 'success', message: 'Voice deleted successfully' });
       queryClient.invalidateQueries({ queryKey: ['voices'] });
+      setVoiceToDelete(null);
     },
     onError: (err: any) => {
       addNotification({ type: 'error', message: getErrorMessage(err) });
+      setVoiceToDelete(null);
     }
   });
 
   const handleDelete = (e: React.MouseEvent, id: string, name: string) => {
     e.stopPropagation();
-    if (window.confirm(`Are you sure you want to delete the voice "${name}"?`)) {
-      deleteMutation.mutate(id);
-    }
+    setVoiceToDelete({ id, name });
   };
 
   return (
@@ -113,6 +114,38 @@ export function VoiceListPage() {
         isOpen={isUploadModalOpen} 
         onClose={() => setIsUploadModalOpen(false)} 
       />
+
+      {voiceToDelete && (
+        <div className="modal-overlay animate-fade-in" onClick={() => !deleteMutation.isPending && setVoiceToDelete(null)}>
+          <div className="modal-content glass-panel" style={{ maxWidth: '400px' }} onClick={e => e.stopPropagation()}>
+            <header className="modal-header">
+              <h2 style={{ color: 'var(--danger-color)' }}>Delete Voice</h2>
+            </header>
+            <div className="modal-body">
+              <p>Are you sure you want to delete <strong>{voiceToDelete.name}</strong>? This action cannot be undone.</p>
+            </div>
+            <footer className="modal-footer">
+              <button 
+                type="button" 
+                className="btn-secondary" 
+                onClick={() => setVoiceToDelete(null)}
+                disabled={deleteMutation.isPending}
+              >
+                Cancel
+              </button>
+              <button 
+                type="button" 
+                className="btn-primary"
+                style={{ backgroundColor: 'var(--danger-color)' }}
+                onClick={() => deleteMutation.mutate(voiceToDelete.id)}
+                disabled={deleteMutation.isPending}
+              >
+                {deleteMutation.isPending ? 'Deleting...' : 'Delete Voice'}
+              </button>
+            </footer>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
