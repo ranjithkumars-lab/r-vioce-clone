@@ -27,16 +27,15 @@ class FasterWhisperEngine(BaseSTTEngine):
             return False
 
     def load_model(self, model_dir: Path, context: Optional[ExecutionContext] = None) -> bool:
-        device_info = f" on {context.device_str}" if context else ""
-        logger.info(f"Loading Faster-Whisper model{device_info}...")
-        
         try:
             from faster_whisper import WhisperModel
-            device = "cuda" if context and context.device_str.startswith("cuda") else "cpu"
-            device_index = context.device_index if context and device == "cuda" else 0
+            # We MUST force CPU for faster-whisper because CTranslate2 v4+ wheels
+            # are compiled with CUDA 12, which crashes on NVIDIA driver 470.
+            device = "cpu"
+            device_index = 0
             
             # Using 'base' model for speed in preprocessing
-            self._model = WhisperModel("base", device=device, device_index=device_index, compute_type="float16" if device == "cuda" else "int8")
+            self._model = WhisperModel("base", device=device, device_index=device_index, compute_type="int8")
             logger.info("Faster-Whisper model loaded successfully.")
             return True
         except Exception as e:
