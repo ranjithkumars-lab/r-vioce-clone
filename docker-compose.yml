@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     image: voicestudio-api:latest
     ports:
-      - "18000:8000"
+      - "11333:8000"
     environment:
       APP_ENV: ${APP_ENV:-production}
       API_V1_STR: /api/v1
@@ -19,7 +19,7 @@ services:
     volumes:
       - /raid/docker-project:/app/storage
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/live"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/live" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -50,7 +50,7 @@ services:
       dockerfile: Dockerfile
     image: voicestudio-frontend:latest
     ports:
-      - "18080:80"
+      - "11222:80"
     depends_on:
       - api
 

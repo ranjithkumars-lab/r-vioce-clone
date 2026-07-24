@@ -19,10 +19,10 @@ class VoiceRepository:
         return self.db.query(VoiceRecord).filter(VoiceRecord.id == voice_id).first()
 
     def get_all(self, skip: int = 0, limit: int = 100) -> List[VoiceRecord]:
-        return self.db.query(VoiceRecord).filter(VoiceRecord.status == "ACTIVE").offset(skip).limit(limit).all()
+        return self.db.query(VoiceRecord).order_by(VoiceRecord.created_at.desc()).offset(skip).limit(limit).all()
 
     def count(self) -> int:
-        return self.db.query(VoiceRecord).filter(VoiceRecord.status == "ACTIVE").count()
+        return self.db.query(VoiceRecord).count()
 
     def delete(self, voice_id: str) -> bool:
         record = self.get_by_id(voice_id)
