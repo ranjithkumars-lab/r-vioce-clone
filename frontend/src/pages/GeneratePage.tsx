@@ -68,9 +68,14 @@ export function GeneratePage() {
               >
                 <option value="">-- Choose a Voice --</option>
                 {/* Handle case where voices might be cached as {voices: []} from before the fix */}
-                {((Array.isArray(voices) ? voices : (voices as any)?.voices) || []).filter((v: any) => v.status === 'ACTIVE' || v.status === 'READY').map((voice: any) => (
-                  <option key={voice.id} value={voice.id}>
+                {((Array.isArray(voices) ? voices : (voices as any)?.voices) || []).map((voice: any) => (
+                  <option 
+                    key={voice.id} 
+                    value={voice.id} 
+                    disabled={voice.status === 'PROCESSING' || voice.status === 'FAILED'}
+                  >
                     {voice.name} ({voice.engine})
+                    {voice.status === 'PROCESSING' ? ' (Processing Transcript...)' : voice.status === 'FAILED' ? ' (Failed)' : ''}
                   </option>
                 ))}
               </select>
