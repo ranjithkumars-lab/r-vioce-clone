@@ -1,13 +1,10 @@
-# syntax=docker/dockerfile:1
-
-# Stage 1: Shared Builder with persistent pip wheel cache
+# Stage 1: Shared Builder
 FROM python:3.11-slim AS builder
 
 WORKDIR /app
 COPY requirements.txt .
 
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --prefix=/install -r requirements.txt
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 # Stage 2: Shared Base Runtime Layer
 FROM python:3.11-slim AS base-runtime
