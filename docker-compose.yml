@@ -82,6 +82,7 @@ services:
 
   redis:
     image: redis:7-alpine
+    command: redis-server --save "" --stop-writes-on-bgsave-error no
     ports:
       - "16379:6379"
     volumes:

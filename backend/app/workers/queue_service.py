@@ -12,19 +12,35 @@ class QueueService:
     def __init__(self):
         self.redis_client = None
         self.redis_url = os.getenv("REDIS_URL", "redis://redis:6379/0")
+        self.backend = os.getenv("QUEUE_BACKEND", "sqlite").lower()
         self._memory_queue: queue.Queue = queue.Queue()
-        self._init_redis()
+        self.use_redis = False
+
+        if self.backend in ("redis", "auto"):
+            self._init_redis()
+        else:
+            logger.info(f"QueueService initialized using '{self.backend}' backend (Redis bypassed per configuration).")
 
     def _init_redis(self):
         try:
             import redis
             client = redis.Redis.from_url(self.redis_url, socket_connect_timeout=1)
             client.ping()
+            # Startup health check: verify write permission to catch Redis MISCONF errors early
+            client.set("_health_check", "ok", px=1000)
             self.redis_client = client
-            logger.info(f"QueueService connected to Redis at '{self.redis_url}'")
+            self.use_redis = True
+            logger.info(f"QueueService connected to Redis at '{self.redis_url}' (Health check passed).")
         except Exception as e:
             self.redis_client = None
-            logger.info(f"QueueService Redis unavailable ({e}). Using DB/In-memory queue fallback.")
+            self.use_redis = False
+            logger.warning(f"QueueService: Redis health check failed ({e}). Permanently switching to DB queue fallback.")
+
+    def _disable_redis(self, reason: str):
+        if self.use_redis:
+            self.use_redis = False
+            self.redis_client = None
+            logger.warning(f"QueueService: Disabling Redis due to runtime error ({reason}). Switched permanently to DB queue.")
 
     def enqueue(self, job_data: Dict[str, Any]) -> None:
         """Push job execution payload to the queue."""
@@ -34,17 +50,17 @@ class QueueService:
         job_id = job_data["job_id"]
         job_type = job_data.get("job_type", "tts")
 
-        # 1. Try Redis Queue
-        if self.redis_client:
+        # 1. Try Redis Queue if enabled and healthy
+        if self.use_redis and self.redis_client:
             try:
                 self.redis_client.rpush("voice_studio_jobs", json.dumps(job_data))
                 depth = self.redis_client.llen("voice_studio_jobs")
                 logger.info(f"Queued job payload via Redis: ID '{job_id}' (Type: {job_type}, Queue depth: {depth})")
                 return
             except Exception as e:
-                logger.warning(f"Redis enqueue failed ({e}), falling back to DB queue.")
+                self._disable_redis(str(e))
 
-        # 2. Try SQLite DB Queue Fallback (Shared across containers via storage volume)
+        # 2. SQLite DB Queue (Shared across containers via storage volume)
         try:
             from app.database.session import SessionLocal
             from app.models.job import QueueJobRecord
@@ -69,8 +85,8 @@ class QueueService:
 
     def dequeue(self, block: bool = True, timeout: Optional[float] = 1.0) -> Optional[Dict[str, Any]]:
         """Pop next job payload off the queue."""
-        # 1. Try Redis
-        if self.redis_client:
+        # 1. Try Redis if enabled and healthy
+        if self.use_redis and self.redis_client:
             try:
                 res = self.redis_client.blpop("voice_studio_jobs", timeout=int(timeout or 1))
                 if res:
@@ -78,12 +94,12 @@ class QueueService:
                     payload = json.loads(payload_bytes.decode("utf-8"))
                     logger.info(f"Dequeued job payload via Redis: ID '{payload.get('job_id')}' (Type: {payload.get('job_type', 'tts')})")
                     return payload
+                return None
             except Exception as e:
                 err_msg = str(e)
                 if "Timeout" in err_msg or "timed out" in err_msg:
-                    logger.debug("Redis queue poll timed out (idle).")
-                else:
-                    logger.warning(f"Redis dequeue error ({e}), checking DB queue.")
+                    return None
+                self._disable_redis(err_msg)
 
         # 2. Try DB Queue
         try:
@@ -112,7 +128,7 @@ class QueueService:
             return None
 
     def size(self) -> int:
-        if self.redis_client:
+        if self.use_redis and self.redis_client:
             try:
                 return self.redis_client.llen("voice_studio_jobs")
             except Exception:
