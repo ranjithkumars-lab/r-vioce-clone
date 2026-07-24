@@ -21,12 +21,15 @@ async def lifespan(app: FastAPI):
     StorageManager().ensure_directories()
     # 2. Initialize SQLite database schema
     init_db()
-    # 3. Start background worker daemon
-    worker_daemon.start()
+    # 3. Start background worker daemon (only if explicitly enabled for single-container setups)
+    import os
+    if os.getenv("ENABLE_EMBEDDED_WORKER", "false").lower() == "true":
+        worker_daemon.start()
     logger.info("Startup complete - ready to accept API requests.")
     yield
     logger.info(f"Shutting down {settings.APP_NAME}...")
-    worker_daemon.stop()
+    if os.getenv("ENABLE_EMBEDDED_WORKER", "false").lower() == "true":
+        worker_daemon.stop()
 
 
 app = FastAPI(
