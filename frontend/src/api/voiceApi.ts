@@ -23,4 +23,8 @@ export const voiceApi = {
     });
     return response.data.voice;
   },
+
+  deleteVoice: async (id: string): Promise<void> => {
+    await apiClient.delete(`/voices/${id}`);
+  },
 };
